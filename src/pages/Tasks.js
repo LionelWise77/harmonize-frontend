@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
-import axiosInstance from "../utils/utils";
+import axios from "../api/axiosDefaults";
 
 function Tasks() {
-  // Estado para manejar las tareas
   const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true); // Estado para manejar el loading
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Obtener las tareas del backend
   useEffect(() => {
-    axiosInstance
-      .get("tasks/") // Llamada al endpoint /api/tasks/
+    axios
+      .get("tasks/")
       .then((response) => {
-        setTasks(response.data); // Guardar las tareas en el estado
-        setLoading(false); // Detener el loading
+        setTasks(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching tasks:", error);
         setError("Error fetching tasks. Please try again later.");
-        setLoading(false); // Detener el loading
+        setLoading(false);
       });
   }, []);
 
-  // Renderizar el contenido basado en el estado
   if (loading) {
     return (
       <div className="container mt-4">
