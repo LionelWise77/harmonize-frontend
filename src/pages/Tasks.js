@@ -7,35 +7,32 @@ function Tasks() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("tasks/")
-      .then((response) => {
+    const fetchTasks = async () => {
+      try {
+        const token = localStorage.getItem("access_token");
+        const response = await axios.get("api/tasks/", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setTasks(response.data);
+      } catch (err) {
+        console.error("Error fetching tasks:", err);
+        setError("Unable to fetch tasks. Please try again.");
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching tasks:", error);
-        setError("Error fetching tasks. Please try again later.");
-        setLoading(false);
-      });
+      }
+    };
+
+    fetchTasks();
   }, []);
 
   if (loading) {
-    return (
-      <div className="container mt-4">
-        <h1>Tasks</h1>
-        <p>Loading tasks...</p>
-      </div>
-    );
+    return <p>Loading tasks...</p>;
   }
 
   if (error) {
-    return (
-      <div className="container mt-4">
-        <h1>Tasks</h1>
-        <p className="text-danger">{error}</p>
-      </div>
-    );
+    return <p className="text-danger">{error}</p>;
   }
 
   return (

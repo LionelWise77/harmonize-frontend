@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ auth }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link className="navbar-brand" to="/">
@@ -20,16 +20,34 @@ function Header() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
+          {/* Home link */}
           <li className="nav-item">
             <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/tasks">
-              Tasks
-            </Link>
-          </li>
+          {/* Authenticated links */}
+          {auth ? (
+            <>
+              <li className="nav-item">
+                <Link className="nav-link" to="/tasks">
+                  Tasks
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout">
+                  Logout
+                </Link>
+              </li>
+            </>
+          ) : (
+            // Non-authenticated links
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
