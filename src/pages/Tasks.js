@@ -15,7 +15,7 @@ function Tasks() {
             Authorization: `Bearer ${token}`,
           },
         });
-        setTasks(response.data);
+        setTasks(response.data.results);
       } catch (err) {
         console.error("Error fetching tasks:", err);
         setError("Unable to fetch tasks. Please try again.");
@@ -34,7 +34,7 @@ function Tasks() {
   if (error) {
     return <p className="text-danger">{error}</p>;
   }
-
+  console.log(tasks);
   return (
     <div className="container mt-4">
       <h1>Tasks</h1>
