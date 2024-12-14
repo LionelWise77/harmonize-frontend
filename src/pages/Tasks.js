@@ -10,7 +10,7 @@ function Tasks() {
     const fetchTasks = async () => {
       try {
         const token = localStorage.getItem("access_token");
-        const response = await axios.get("api/tasks/", {
+        const response = await axios.get("tasks/", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
