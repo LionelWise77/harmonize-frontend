@@ -30,6 +30,13 @@ function App() {
         <Route path="/tasks">
           {auth ? <Tasks /> : <Redirect to="/login" />}
         </Route>
+        <Route path="/register">
+          {auth ? <Tasks /> : <Redirect to="/register" />}
+        </Route>
+        <Route path="/create-task">
+          {auth ? <Tasks /> : <Redirect to="/CreateTasks" />}
+        </Route>
+
         <Route>
           <h1>404 - Page Not Found</h1>
         </Route>
