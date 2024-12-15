@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "../api/axiosDefaults";
 
 function Login({ setAuth }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +16,7 @@ function Login({ setAuth }) {
         localStorage.setItem("access_token", response.data.access);
         localStorage.setItem("refresh_token", response.data.refresh);
         setAuth(true);
+        history.push("/tasks"); // Redirige a la página de tareas
       })
       .catch((err) => {
         console.error(err);
@@ -34,7 +37,6 @@ function Login({ setAuth }) {
             className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            autoComplete="username"
             required
           />
         </div>
@@ -46,7 +48,6 @@ function Login({ setAuth }) {
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
             required
           />
         </div>

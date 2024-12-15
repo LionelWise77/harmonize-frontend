@@ -34,7 +34,7 @@ function Tasks() {
   if (error) {
     return <p className="text-danger">{error}</p>;
   }
-  console.log(tasks);
+
   return (
     <div className="container mt-4">
       <h1>Tasks</h1>

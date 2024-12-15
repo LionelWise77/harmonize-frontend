@@ -1,35 +1,25 @@
 import React, { useState } from "react";
 import axios from "../api/axiosDefaults";
 
-function CreateTask() {
+function TaskCreate() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [dueDate, setDueDate] = useState("");
-  const [priority, setPriority] = useState("M");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     axios
-      .post("tasks/", {
-        title,
-        description,
-        due_date: dueDate,
-        priority,
-      })
+      .post("tasks/", { title, description })
       .then((response) => {
         setSuccess(true);
         setError(null);
         setTitle("");
         setDescription("");
-        setDueDate("");
-        setPriority("M");
       })
       .catch((err) => {
-        console.error(err.response.data);
-        setError("Task creation failed. Please try again.");
+        console.error(err);
+        setError("Failed to create task. Please check authentication.");
       });
   };
 
@@ -57,30 +47,8 @@ function CreateTask() {
             className="form-control"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="dueDate">Due Date</label>
-          <input
-            type="date"
-            id="dueDate"
-            className="form-control"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
+            required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="priority">Priority</label>
-          <select
-            id="priority"
-            className="form-control"
-            value={priority}
-            onChange={(e) => setPriority(e.target.value)}
-          >
-            <option value="L">Low</option>
-            <option value="M">Medium</option>
-            <option value="H">High</option>
-          </select>
         </div>
         <button type="submit" className="btn btn-primary">
           Create Task
@@ -90,4 +58,4 @@ function CreateTask() {
   );
 }
 
-export default CreateTask;
+export default TaskCreate;

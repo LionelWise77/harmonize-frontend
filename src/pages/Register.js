@@ -1,33 +1,55 @@
 import React, { useState } from "react";
 import axios from "../api/axiosDefaults";
 
-function Register() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+function Register({ setAuth }) {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password1: "",
+    password2: "",
+  });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(null);
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
+    // Step 1: Register the user
     axios
-      .post("dj-rest-auth/registration/", {
-        username: username,
-        password1: password,
-        password2: confirmPassword,
-      })
+      .post("dj-rest-auth/registration/", formData)
       .then((response) => {
         setSuccess(true);
-        setError(null);
+        console.log("User registered successfully:", response.data);
+
+        // Step 2: Automatically log in the user after successful registration
+        axios
+          .post("dj-rest-auth/login/", {
+            username: formData.username,
+            password: formData.password1,
+          })
+          .then((loginResponse) => {
+            // Save tokens to localStorage
+            localStorage.setItem("access_token", loginResponse.data.access);
+            localStorage.setItem("refresh_token", loginResponse.data.refresh);
+            setAuth(true); // Update auth state
+          })
+          .catch((loginError) => {
+            console.error("Login failed after registration:", loginError);
+            setError(
+              "Registration successful, but login failed. Please log in manually."
+            );
+          });
       })
       .catch((err) => {
-        console.error(err.response.data);
+        console.error(err);
         setError("Registration failed. Please try again.");
       });
   };
@@ -35,7 +57,7 @@ function Register() {
   return (
     <div className="container mt-4">
       <h1>Register</h1>
-      {success && <p className="text-success">Registration successful!</p>}
+      {success && <p className="text-success">Account created successfully!</p>}
       {error && <p className="text-danger">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -43,31 +65,46 @@ function Register() {
           <input
             type="text"
             id="username"
+            name="username"
             className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="email">Email</label>
           <input
-            type="password"
-            id="password"
+            type="email"
+            id="email"
+            name="email"
             className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.email}
+            onChange={handleChange}
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="password1">Password</label>
           <input
             type="password"
-            id="confirmPassword"
+            id="password1"
+            name="password1"
             className="form-control"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
+            value={formData.password1}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            className="form-control"
+            value={formData.password2}
+            onChange={handleChange}
             required
           />
         </div>

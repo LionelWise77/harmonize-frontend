@@ -1,10 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Logout({ setAuth }) {
+  const history = useHistory();
+
   const handleLogout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
     setAuth(false);
+    history.push("/"); // Redirige al Home
   };
 
   return (
