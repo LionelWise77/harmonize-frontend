@@ -1,0 +1,83 @@
+.heroContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.heroLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #2e4c40;
+  color: white;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.heroQuote {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.heroButton {
+  background-color: #6b8e8e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.heroButton:hover {
+  background-color: #a0c1b8;
+}
+
+.formContainer {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.formContainer.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroRight {
+  flex: 1;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #2e4c40;
+}
+
+.taskBox {
+  background-color: #f0f8f7;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}

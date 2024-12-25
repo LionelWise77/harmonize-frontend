@@ -1,0 +1,110 @@
+/* Contenedor principal */
+.Row {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #2e4c40; /* Color de fondo similar al Hero */
+}
+
+/* Encabezado */
+.Header {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #2e4c40;
+}
+
+/* Contenedor del formulario */
+.FormContainer {
+  width: 100%;
+  max-width: 400px; /* Limita el ancho del formulario */
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Fields */
+.Input {
+  border: 1px solid #d4e4e4;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Botón de Submit */
+.Button {
+  background-color: #6b8e8e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.Button:hover {
+  background-color: #a0c1b8;
+}
+
+/* Enlace */
+.Link {
+  text-align: center;
+  text-decoration: none;
+  color: #2e4c40;
+  display: block;
+  margin-top: 15px;
+}
+
+.Link span {
+  font-weight: bold;
+  color: #6b8e8e;
+}
+
+/* Columna Derecha con Imagen */
+.SignUpCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  height: 100%;
+}
+
+.SignUpCol img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.heroButton {
+  text-decoration: none;
+  background-color: #6b8e8e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.heroButton:hover {
+  background-color: #a0c1b8;
+}
+
+.Content {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,49 @@
+/* NavBar.module.css */
+
+/* Estilo general del NavBar */
+.NavBar {
+  background-color: #215738; /* Verde moderno */
+  padding: 0.8rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif; /* Fuente estilizada */
+}
+
+/* Estilo para el nombre de la app */
+.AppName {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.AppName:hover {
+  color: #f0f8ff; /* Un azul claro al pasar el ratón */
+  cursor: pointer;
+}
+
+/* Enlaces del NavBar */
+.NavLink {
+  color: #f8f9fa;
+  font-size: 1.1rem;
+  margin: 0 0.8rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.NavLink:hover {
+  color: #b2d8b2; /* Verde claro */
+  transform: translateY(-3px);
+}
+
+.Active {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 2px;
+}
+
+/* Nombre del usuario */
+.Username {
+  font-size: 1.1rem;
+  color: #f0f8ff;
+  margin-right: 1rem;
+}
