@@ -25,7 +25,7 @@ const HeroSection = () => {
     if (currentUser) {
       const fetchTasks = async () => {
         try {
-          const { data } = await axios.get("tasks/"); // Ajusta la ruta según tu backend
+          const { data } = await axios.get("api/tasks/");
           setTasks(data);
         } catch (err) {
           console.error("Error fetching tasks:", err);

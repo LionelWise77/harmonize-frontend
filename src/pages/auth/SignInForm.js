@@ -28,7 +28,7 @@ const SignInForm = () => {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
-      history.push("api/tasks");
+      history.push("/tasks/");
     } catch (err) {
       setErrors(
         err.response?.data || { non_field_errors: ["Invalid credentials."] }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import styles from "../styles/Header.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
@@ -11,18 +11,29 @@ import axios from "axios";
 const Header = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const history = useHistory();
 
   const handleLogout = async () => {
     try {
-      await axios.post("/dj-rest-auth/logout/");
+      await axios.post(
+        "/dj-rest-auth/logout/",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
       setCurrentUser(null);
       localStorage.removeItem("access_token");
+      console.log("Logout successful");
+      history.push("/signin");
     } catch (err) {
-      console.error("Logout failed:", err);
+      console.error("Logout failed:", err.response || err.message);
     }
   };
 
-  // Iconos cuando el usuario está autenticado
   const loggedInIcons = (
     <>
       <span className={styles.NavLink}>
@@ -37,7 +48,6 @@ const Header = () => {
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
-        {/* Nombre de la App en lugar del logo */}
         <Navbar.Brand className={styles.AppName}>
           Harmonize Daily Planner
         </Navbar.Brand>

@@ -1,10 +1,22 @@
 import React from "react";
-import "../App.module.css";
+import axios from "../api/axiosDefaults";
 
 function Logout({ setAuth }) {
-  const handleLogout = () => {
-    localStorage.removeItem("access_token");
-    setAuth(false);
+  const handleLogout = async () => {
+    try {
+      await axios.post(
+        "/dj-rest-auth/logout/",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      localStorage.removeItem("access_token");
+      setAuth(false);
+      console.log("Logout successful");
+    } catch (err) {
+      console.error("Logout failed:", err.response || err.message);
+    }
   };
 
   return (

@@ -10,8 +10,9 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axios.get("tasks/");
-        setTasks(data);
+        const { data } = await axios.get("/tasks/");
+        console.log("Tasks fetched:", data.results);
+        setTasks(data.results);
       } catch (err) {
         console.error("Error fetching tasks:", err);
         setErrors("Error fetching tasks. Please try again.");
@@ -21,15 +22,17 @@ const Tasks = () => {
     fetchTasks();
   }, []);
   const handleTaskCreated = (newTask) => {
-    setTasks((prevTasks) => [...prevTasks, newTask]); // Añadir la nueva tarea a la lista
+    setTasks((prevTasks) => [...prevTasks, newTask]);
   };
 
   return (
     <div className={styles.tasksContainer}>
       <h1>Your Tasks</h1>
 
-      {/* Mostrar errores */}
-      {errors && <p className={styles.error}>{errors}</p>}
+      {}
+      {errors && (
+        <p className={`${styles.error} alert alert-danger`}>{errors}</p>
+      )}
 
       {/* Componente para crear tareas */}
       <CreateTask onTaskCreated={handleTaskCreated} />

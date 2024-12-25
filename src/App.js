@@ -14,7 +14,6 @@ import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import Tasks from "./pages/Tasks";
 import Calendar from "./pages/Calendar";
-import Logout from "./pages/Logout";
 
 // Estilos
 import styles from "./App.module.css";
@@ -35,7 +34,6 @@ function App() {
             {/* Autenticación */}
             <Route path="/signup" component={SignUpForm} />
             <Route path="/signin" component={SignInForm} />
-            <Route path="/logout" component={Logout} />
 
             {/* Funcionalidad Principal */}
             <Route path="/tasks" component={Tasks} />
