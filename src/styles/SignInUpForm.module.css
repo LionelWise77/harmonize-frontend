@@ -108,3 +108,52 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.FormTitle {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2e4c40;
+}
+
+.Input:focus {
+  outline: none;
+  border-color: #6b8e8e;
+  box-shadow: 0 0 5px rgba(107, 142, 142, 0.5);
+}
+
+.ErrorMessage {
+  color: #d9534f;
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+/* HeroSection.module.css */
+
+/* Estilos generales */
+.heroContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.heroLeft {
+  flex: 1;
+  padding: 40px;
+  background-color: #2e4c40;
+  color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+
+  .heroLeft,
+  .heroRight {
+    width: 100%;
+    padding: 20px;
+  }
+}

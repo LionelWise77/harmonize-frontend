@@ -4,7 +4,6 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import axios from "axios";
-import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignInForm = () => {
   const [signInData, setSignInData] = useState({
@@ -15,20 +14,29 @@ const SignInForm = () => {
 
   const [errors, setErrors] = useState({});
   const history = useHistory();
-  const setCurrentUser = useSetCurrentUser();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setSignInData((prevData) => ({ ...prevData, [name]: value }));
+    setSignInData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      setCurrentUser(data.user);
-      history.push("/tasks/");
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+
+      // Guardar tokens y redirigir
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
+      history.push("/tasks");
     } catch (err) {
       setErrors(
         err.response?.data || { non_field_errors: ["Invalid credentials."] }
@@ -41,7 +49,6 @@ const SignInForm = () => {
       <h1 className={styles.Header}>Sign In</h1>
 
       <Form onSubmit={handleSubmit}>
-        {/* Username */}
         <Form.Group controlId="username">
           <Form.Control
             className={styles.Input}
@@ -59,7 +66,6 @@ const SignInForm = () => {
           </Alert>
         ))}
 
-        {/* Password */}
         <Form.Group controlId="password">
           <Form.Control
             className={styles.Input}
@@ -77,7 +83,6 @@ const SignInForm = () => {
           </Alert>
         ))}
 
-        {/* Submit Button */}
         <Button
           className={`${btnStyles.Button} ${btnStyles.Wide}`}
           type="submit"
@@ -91,7 +96,6 @@ const SignInForm = () => {
         ))}
       </Form>
 
-      {/* Link to Sign Up */}
       <div className="mt-3 text-center">
         <Link className={styles.Link} to="/signup">
           Don't have an account? <span>Sign Up</span>

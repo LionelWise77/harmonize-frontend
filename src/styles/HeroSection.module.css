@@ -81,3 +81,63 @@
   padding: 10px;
   border-radius: 5px;
 }
+
+.heroLoggedIn {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #2e4c40;
+}
+
+.taskList {
+  margin-top: 20px;
+}
+
+.taskBox {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e0f2f1;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.taskBox div {
+  font-size: 1rem;
+  color: #2e4c40;
+}
+
+.noTasks {
+  text-align: center;
+  color: #6b8e8e;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+/* HeroSection.module.css */
+
+/* Estilos generales */
+.heroContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.heroLeft {
+  flex: 1;
+  padding: 40px;
+  background-color: #2e4c40;
+  color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+
+  .heroLeft,
+  .heroRight {
+    width: 100%;
+    padding: 20px;
+  }
+}

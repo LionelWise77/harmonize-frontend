@@ -15,3 +15,47 @@
 .Wide {
   width: 100%;
 }
+
+.ButtonGlobal {
+  background-color: #6b8e8e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ButtonGlobal:hover {
+  background-color: #a0c1b8;
+}
+
+/* HeroSection.module.css */
+
+/* Estilos generales */
+.heroContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.heroLeft {
+  flex: 1;
+  padding: 40px;
+  background-color: #2e4c40;
+  color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+
+  .heroLeft,
+  .heroRight {
+    width: 100%;
+    padding: 20px;
+  }
+}

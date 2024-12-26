@@ -47,3 +47,58 @@
   color: #f0f8ff;
   margin-right: 1rem;
 }
+
+.HeaderLoggedIn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: white;
+}
+
+.HeaderLoggedIn span {
+  font-weight: bold;
+}
+
+.LogoutButton {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.LogoutButton:hover {
+  background-color: #c9302c;
+}
+
+/* HeroSection.module.css */
+
+/* Estilos generales */
+.heroContainer {
+  display: flex;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.heroLeft {
+  flex: 1;
+  padding: 40px;
+  background-color: #2e4c40;
+  color: white;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+  }
+
+  .heroLeft,
+  .heroRight {
+    width: 100%;
+    padding: 20px;
+  }
+}

@@ -1,8 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 // Context
-import { CurrentUserProvider } from "./contexts/CurrentUserContext";
+import {
+  CurrentUserProvider,
+  useCurrentUser,
+} from "./contexts/CurrentUserContext";
 
 // Components
 import Header from "./components/Header";
@@ -18,6 +26,20 @@ import Calendar from "./pages/Calendar";
 // Estilos
 import styles from "./App.module.css";
 
+// Componente de Ruta Protegida
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const currentUser = useCurrentUser();
+
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        currentUser ? <Component {...props} /> : <Redirect to="/signin" />
+      }
+    />
+  );
+};
+
 function App() {
   return (
     <CurrentUserProvider>
@@ -31,13 +53,14 @@ function App() {
             {/* Página Principal */}
             <Route exact path="/" component={HeroSection} />
 
-            {/* Autenticación */}
-            <Route path="/signup" component={SignUpForm} />
-            <Route path="/signin" component={SignInForm} />
+            <Switch>
+              <Route path="/signin" component={SignInForm} />
+              <Route path="/signup" component={SignUpForm} />
+            </Switch>
 
-            {/* Funcionalidad Principal */}
-            <Route path="/tasks" component={Tasks} />
-            <Route path="/calendar" component={Calendar} />
+            {/* Funcionalidad Principal (Rutas Protegidas) */}
+            <ProtectedRoute path="/tasks" component={Tasks} />
+            <ProtectedRoute path="/calendar" component={Calendar} />
 
             {/* 404 */}
             <Route render={() => <h1>404 - Page Not Found</h1>} />

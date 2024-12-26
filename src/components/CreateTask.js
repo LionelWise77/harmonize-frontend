@@ -22,7 +22,7 @@ const CreateTask = ({ onTaskCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/tasks/", formData);
+      const { data } = await axios.post("tasks/", formData);
       onTaskCreated(data); // Notifica al componente padre que se creó una tarea
       setFormData({
         title: "",

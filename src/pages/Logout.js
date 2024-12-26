@@ -4,18 +4,12 @@ import axios from "../api/axiosDefaults";
 function Logout({ setAuth }) {
   const handleLogout = async () => {
     try {
-      await axios.post(
-        "/dj-rest-auth/logout/",
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      await axios.post("/dj-rest-auth/logout/");
       localStorage.removeItem("access_token");
-      setAuth(false);
-      console.log("Logout successful");
+      setCurrentUser(null); // Limpia el usuario actual
+      history.push("/"); // Redirige al HeroSection
     } catch (err) {
-      console.error("Logout failed:", err.response || err.message);
+      console.error("Logout failed:", err);
     }
   };
 

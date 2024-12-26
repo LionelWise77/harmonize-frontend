@@ -10,7 +10,7 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axios.get("/tasks/");
+        const { data } = await axios.get("tasks/");
         console.log("Tasks fetched:", data.results);
         setTasks(data.results);
       } catch (err) {

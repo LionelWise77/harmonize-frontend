@@ -22,15 +22,14 @@ const Header = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+          withCredentials: true, // Para enviar cookies
         }
       );
-      setCurrentUser(null);
-      localStorage.removeItem("access_token");
-      console.log("Logout successful");
-      history.push("/signin");
+      localStorage.removeItem("access_token"); // Elimina el token
+      setCurrentUser(null); // Limpia el usuario actual
+      history.push("/signin"); // Redirige al inicio de sesión
     } catch (err) {
-      console.error("Logout failed:", err.response || err.message);
+      console.error("Logout failed:", err);
     }
   };
 
@@ -41,6 +40,14 @@ const Header = () => {
       </span>
       <NavLink to="/" className={styles.NavLink} onClick={handleLogout}>
         <i className="fas fa-sign-out-alt"></i> Logout
+      </NavLink>
+    </>
+  );
+
+  const guestIcons = (
+    <>
+      <NavLink to="/logout" className={styles.NavLink}>
+        Logout
       </NavLink>
     </>
   );
@@ -58,7 +65,7 @@ const Header = () => {
             <NavLink className={styles.NavLink} exact to="/">
               Home
             </NavLink>
-            {currentUser ? loggedInIcons : null}
+            {currentUser ? loggedInIcons : guestIcons}
           </Nav>
         </Navbar.Collapse>
       </Container>
