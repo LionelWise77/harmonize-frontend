@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { axiosReq } from "../api/axiosDefaults";
+import { axiosReq } from "./api/axiosDefaults";
 
 // Obtener más datos de una API paginada
 export const fetchMoreData = async (resource, setResource) => {
@@ -8,11 +8,13 @@ export const fetchMoreData = async (resource, setResource) => {
     setResource((prevResource) => ({
       ...prevResource,
       next: data.next,
-      results: data.results.reduce((acc, cur) => {
-        return acc.some((accResult) => accResult.id === cur.id)
-          ? acc
-          : [...acc, cur];
-      }, prevResource.results),
+      results: [
+        ...prevResource.results,
+        ...data.results.filter(
+          (item) =>
+            !prevResource.results.some((prevItem) => prevItem.id === item.id)
+        ),
+      ],
     }));
   } catch (err) {
     console.error("Error fetching more data:", err);
@@ -21,15 +23,23 @@ export const fetchMoreData = async (resource, setResource) => {
 
 // Guardar la marca de tiempo del token de actualización
 export const setTokenTimestamp = (data) => {
-  const refreshTokenTimestamp = jwtDecode(data?.refresh_token).exp;
-  localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+  try {
+    if (data?.refresh_token) {
+      const refreshTokenTimestamp = jwtDecode(data.refresh_token).exp;
+      localStorage.setItem("refreshTokenTimestamp", refreshTokenTimestamp);
+    }
+  } catch (err) {
+    console.error("Error decoding token:", err);
+  }
 };
 
 // Verificar si es necesario refrescar el token
 export const shouldRefreshToken = () => {
   const tokenTimestamp = localStorage.getItem("refreshTokenTimestamp");
+  if (!tokenTimestamp) return false;
+
   const currentTime = Math.floor(Date.now() / 1000);
-  return tokenTimestamp && currentTime > tokenTimestamp - 300;
+  return currentTime > tokenTimestamp - 300;
 };
 
 // Eliminar la marca de tiempo del token

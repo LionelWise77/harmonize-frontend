@@ -1,12 +1,12 @@
-import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import styles from "../styles/Header.module.css";
-import { NavLink, useHistory } from "react-router-dom";
+import React from "react"; // Importar React
+import { Navbar, Container, Nav } from "react-bootstrap"; // Bootstrap Navbar
+import { NavLink, useHistory } from "react-router-dom"; // Navegación y historial
+import axios from "axios"; // Axios para las peticiones
+import styles from "../styles/Header.module.css"; // Estilos
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import axios from "axios";
 
 const Header = () => {
   const currentUser = useCurrentUser();
@@ -22,12 +22,12 @@ const Header = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true, // Para enviar cookies
+          withCredentials: true,
         }
       );
-      localStorage.removeItem("access_token"); // Elimina el token
-      setCurrentUser(null); // Limpia el usuario actual
-      history.push("/signin"); // Redirige al inicio de sesión
+      localStorage.removeItem("access_token");
+      setCurrentUser(null);
+      history.push("/signin");
     } catch (err) {
       console.error("Logout failed:", err);
     }
@@ -46,8 +46,11 @@ const Header = () => {
 
   const guestIcons = (
     <>
-      <NavLink to="/logout" className={styles.NavLink}>
-        Logout
+      <NavLink to="/signup" className={styles.NavLink}>
+        <i className="fas fa-user-plus"></i> Sign Up
+      </NavLink>
+      <NavLink to="/signin" className={styles.NavLink}>
+        <i className="fas fa-sign-in-alt"></i> Sign In
       </NavLink>
     </>
   );

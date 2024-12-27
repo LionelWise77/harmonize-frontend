@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
+import { shouldRefreshToken, removeTokenTimestamp } from "../utils";
 
-// Contextos para compartir el usuario actual
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
@@ -17,7 +17,8 @@ export const CurrentUserProvider = ({ children }) => {
   const fetchCurrentUser = async () => {
     try {
       const { data } = await axiosRes.get("/dj-rest-auth/user/");
-      setCurrentUser(data); // Establece el usuario actual
+      console.log("Current User Data:", data);
+      setCurrentUser(data);
     } catch (err) {
       console.error("Error fetching current user:", err);
       setCurrentUser(null);
@@ -28,32 +29,38 @@ export const CurrentUserProvider = ({ children }) => {
     fetchCurrentUser();
   }, []);
 
-  useMemo(() => {
-    // Interceptor para solicitudes salientes
-    axiosReq.interceptors.request.use(
+  useEffect(() => {
+    // Interceptor para solicitudes
+    const requestInterceptor = axiosReq.interceptors.request.use(
       async (config) => {
-        try {
-          await axios.post("/dj-rest-auth/token/refresh/"); // Intenta refrescar el token
-        } catch (err) {
-          setCurrentUser(null);
-          history.push("/signin");
+        if (shouldRefreshToken()) {
+          try {
+            const { data } = await axios.post("/dj-rest-auth/token/refresh/");
+            localStorage.setItem("access_token", data.access);
+            config.headers.Authorization = `Bearer ${data.access}`;
+          } catch (err) {
+            removeTokenTimestamp();
+            setCurrentUser(null);
+            history.push("/signin");
+          }
         }
         return config;
       },
-      (err) => {
-        return Promise.reject(err);
-      }
+      (err) => Promise.reject(err)
     );
 
     // Interceptor para respuestas
-    axiosRes.interceptors.response.use(
+    const responseInterceptor = axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
           try {
-            await axios.post("/dj-rest-auth/token/refresh/");
+            const { data } = await axios.post("/dj-rest-auth/token/refresh/");
+            localStorage.setItem("access_token", data.access);
+            err.config.headers.Authorization = `Bearer ${data.access}`;
             return axios(err.config); // Reintenta la solicitud
           } catch (err) {
+            removeTokenTimestamp();
             setCurrentUser(null);
             history.push("/signin");
           }
@@ -61,6 +68,12 @@ export const CurrentUserProvider = ({ children }) => {
         return Promise.reject(err);
       }
     );
+
+    // Limpia los interceptores al desmontar
+    return () => {
+      axiosReq.interceptors.request.eject(requestInterceptor);
+      axiosRes.interceptors.response.eject(responseInterceptor);
+    };
   }, [history]);
 
   return (

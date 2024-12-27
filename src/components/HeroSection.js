@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react"; // React y hooks
 import styles from "../styles/HeroSection.module.css";
 
 const HeroSection = () => {
@@ -20,14 +19,6 @@ const HeroSection = () => {
       <div className={styles.heroLeft}>
         <h1 className={styles.heroTitle}>Harmonize Daily Planner</h1>
         <p className={styles.heroQuote}>{quote}</p>
-        <div className={styles.heroButtons}>
-          <Link to="/signup" className={styles.heroButton}>
-            Sign Up
-          </Link>
-          <Link to="/signin" className={styles.heroButton}>
-            Sign In
-          </Link>
-        </div>
       </div>
       <div className={styles.heroRight}>
         <h2 className={styles.heroSubtitle}>Así se ve tu día</h2>
