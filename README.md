@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+## Harmonize Daily Planner - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### **Project Description**
 
-## Available Scripts
+The frontend of the Harmonize Daily Planner is a React application designed to provide an intuitive user interface for managing daily tasks. It communicates with the backend API for data handling.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. [Features](#features)
+2. [Visual Overview](#visual-overview)
+3. [Technologies Used](#technologies-used)
+4. [Contributing](#contributing)
+5. [Testing](#testing)
+6. [Unfixed Bugs](#unfixed-bugs)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
+9. [Content](#content)
+10. [Media](#media)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### **Features**
 
-### `npm test`
+1. User Authentication:
+   - Login, Logout, Registration.
+2. Task Management:
+   - View tasks.
+   - Create, Edit, and Delete tasks.
+3. Responsive Design:
+   - Optimized for desktop and mobile.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Visual Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Header
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Header](/assets/images/harmonize-header.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- The header displays the name of the **Harmonize** task management application, using the primary color scheme for consistency.
+- This section enables users to navigate seamlessly between pages across all devices, without relying on the browser's 'back' button.
 
-### `npm run eject`
+### Landing Page (Hero Section)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Hero](/assets/images/harmonize-hero.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- The landing page features an inspirational background image with an overlay of motivational text to immediately engage the user.
+- This section invites users to take control of their tasks and improve their productivity in a visually appealing way.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Benefits Section
 
-## Learn More
+![Benefits](/assets/images/harmonize-benefits.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- This section highlights the benefits of using **Harmonize**, such as improved productivity, better task organization, and reduced stress by staying on top of deadlines.
+- The benefits are designed to resonate with users looking for a streamlined task management solution.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+### **Technologies Used**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **React**: Frontend framework.
+- **React Bootstrap**: UI components.
+- **Axios**: HTTP client for API communication.
+- **React Router**: Routing.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### **Setup Instructions**
 
-### Making a Progressive Web App
+#### **1. Clone the Repository**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+git clone <repository_url>
+cd frontend
+```
 
-### Advanced Configuration
+## Install Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- npm install
 
-### Deployment
+## Configure Axios Base URL
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- In src/api/axiosDefaults.js, set the correct backend URL:
+  axios.defaults.baseURL = "<backend_url>";
+  axios.defaults.withCredentials = true;
 
-### `npm run build` fails to minify
+  ## Run the development Server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  - npm start
+
+## Available Routes
+
+### Public Routes
+
+- / - Home (Hero Section).
+- /signin - Sign In.
+- /signup - Sign Up.
+
+### Protected Routes
+
+- /tasks - View Tasks.
+- /tasks/create - Create New Task
+
+## Testing
+
+![home](/assets/css/images/lighthouse%20resubmited.png)
+
+- well this webside was my first and take more time, i guest is not a bad puntuation but i can make better next time.
+
+![about](/assets/css/images/about%20screen.png)
+
+- im very satisfied with the result obtein with the others two sides, i was excited and very proud of.
+
+![Sign up](/assets/css/images/signup%20screen%20test.png)
+
+- i have problem and bugs with the media quarie but could solved in the last moment
+
+### Validator Testing
+
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Flionelwise77.github.io%2FPP1-The-Alchemist-Cave%2F)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Flionelwise77.github.io%2FPP1-The-Alchemist-Cave%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+### Unfixed Bugs
+
+## all bugs were fixed , i have trouble with some CSS bugs but at the end everything is running well.
+
+## Deployment
+
+The live link can be found here - https://github.com/LionelWise77/PP1-The-Alchemist-Cave/deployments
+
+## Credits
+
+i share my Credits , wiht my Mentor Dick, the tutors from Code Institute and some classmates in slack.
+
+### Content
+
+- The text for the Home page was taken from Wikipedia Article Breatwork
+- Instructions on how to implement Breathwork techniques [Specific YouTube channel](https://www.youtube.com/@BreatheWithSandy)
+- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+
+### Media
+
+- The photos used on the home and sign up page are from [photos source](https://www.pexels.com/search/natural/)
