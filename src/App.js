@@ -14,14 +14,12 @@ import {
 
 // Components
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import HeroSection from "./components/HeroSection";
 
 // Páginas
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import Tasks from "./pages/Tasks";
-import Calendar from "./pages/Calendar";
 
 // Estilos
 import styles from "./App.module.css";
@@ -53,21 +51,16 @@ function App() {
             {/* Página Principal */}
             <Route exact path="/" component={HeroSection} />
 
-            <Switch>
-              <Route path="/signin" component={SignInForm} />
-              <Route path="/signup" component={SignUpForm} />
-            </Switch>
+            {/* Autenticación */}
+            <Route path="/signin" component={SignInForm} />
+            <Route path="/signup" component={SignUpForm} />
 
             {/* Funcionalidad Principal (Rutas Protegidas) */}
             <ProtectedRoute path="/tasks" component={Tasks} />
-            <ProtectedRoute path="/calendar" component={Calendar} />
 
             {/* 404 */}
             <Route render={() => <h1>404 - Page Not Found</h1>} />
           </Switch>
-
-          {/* Footer */}
-          <Footer />
         </div>
       </Router>
     </CurrentUserProvider>

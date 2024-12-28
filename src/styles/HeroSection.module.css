@@ -1,143 +1,49 @@
 .heroContainer {
   display: flex;
-  height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.heroLeft {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  background-color: #2e4c40;
-  color: white;
+  text-align: center;
+  background-color: #f0f8ff;
+  height: 100vh;
+  padding: 20px;
+}
+
+.heroContent {
+  max-width: 600px;
 }
 
 .heroTitle {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 1rem;
 }
 
-.heroQuote {
+.heroSubtitle {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  color: #34495e;
+  margin-bottom: 2rem;
+  font-style: italic;
 }
 
 .heroButtons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
+  justify-content: center;
 }
 
 .heroButton {
-  background-color: #6b8e8e;
-  color: white;
-  border: none;
   padding: 10px 20px;
   font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #3498db;
+  border: none;
   border-radius: 5px;
-  cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
 .heroButton:hover {
-  background-color: #a0c1b8;
-}
-
-.formContainer {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 400px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.formContainer.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.heroRight {
-  flex: 1;
-  padding: 40px;
-  background-color: #ffffff;
-}
-
-.heroSubtitle {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #2e4c40;
-}
-
-.taskBox {
-  background-color: #f0f8f7;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.heroLoggedIn {
-  font-size: 1.5rem;
-  text-align: center;
-  color: #2e4c40;
-}
-
-.taskList {
-  margin-top: 20px;
-}
-
-.taskBox {
-  display: flex;
-  justify-content: space-between;
-  background-color: #e0f2f1;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.taskBox div {
-  font-size: 1rem;
-  color: #2e4c40;
-}
-
-.noTasks {
-  text-align: center;
-  color: #6b8e8e;
-  font-size: 1.2rem;
-  margin-top: 20px;
-}
-
-/* HeroSection.module.css */
-
-/* Estilos generales */
-.heroContainer {
-  display: flex;
-  height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.heroLeft {
-  flex: 1;
-  padding: 40px;
-  background-color: #2e4c40;
-  color: white;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
-  }
-
-  .heroLeft,
-  .heroRight {
-    width: 100%;
-    padding: 20px;
-  }
+  background-color: #2980b9;
 }

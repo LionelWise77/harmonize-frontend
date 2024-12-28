@@ -1,8 +1,7 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useHistory } from "react-router-dom";
-import { shouldRefreshToken, removeTokenTimestamp } from "../utils";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -11,69 +10,67 @@ export const useCurrentUser = () => useContext(CurrentUserContext);
 export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null); // Estado del usuario autenticado
   const history = useHistory();
 
-  const fetchCurrentUser = async () => {
+  // Función para montar y verificar el usuario autenticado
+  const handleMount = async () => {
     try {
-      const { data } = await axiosRes.get("/dj-rest-auth/user/");
-      console.log("Current User Data:", data);
+      const { data } = await axiosRes.get("/dj-rest-auth/user/"); // Ajusta esta ruta si es necesario
       setCurrentUser(data);
     } catch (err) {
-      console.error("Error fetching current user:", err);
-      setCurrentUser(null);
+      console.log("Error al obtener usuario:", err);
     }
   };
 
+  // Llamada inicial para verificar el usuario al montar el componente
   useEffect(() => {
-    fetchCurrentUser();
+    handleMount();
   }, []);
 
-  useEffect(() => {
+  // Configuración de interceptores para manejar tokens y errores
+  useMemo(() => {
     // Interceptor para solicitudes
-    const requestInterceptor = axiosReq.interceptors.request.use(
+    axiosReq.interceptors.request.use(
       async (config) => {
-        if (shouldRefreshToken()) {
-          try {
-            const { data } = await axios.post("/dj-rest-auth/token/refresh/");
-            localStorage.setItem("access_token", data.access);
-            config.headers.Authorization = `Bearer ${data.access}`;
-          } catch (err) {
-            removeTokenTimestamp();
-            setCurrentUser(null);
-            history.push("/signin");
-          }
+        try {
+          await axios.post("/dj-rest-auth/token/refresh/"); // Ajusta esta ruta si es necesario
+        } catch (err) {
+          setCurrentUser((prevCurrentUser) => {
+            if (prevCurrentUser) {
+              history.push("/signin"); // Redirige al login si el usuario no está autenticado
+            }
+            return null;
+          });
+          return config;
         }
         return config;
       },
-      (err) => Promise.reject(err)
-    );
-
-    // Interceptor para respuestas
-    const responseInterceptor = axiosRes.interceptors.response.use(
-      (response) => response,
-      async (err) => {
-        if (err.response?.status === 401) {
-          try {
-            const { data } = await axios.post("/dj-rest-auth/token/refresh/");
-            localStorage.setItem("access_token", data.access);
-            err.config.headers.Authorization = `Bearer ${data.access}`;
-            return axios(err.config); // Reintenta la solicitud
-          } catch (err) {
-            removeTokenTimestamp();
-            setCurrentUser(null);
-            history.push("/signin");
-          }
-        }
+      (err) => {
         return Promise.reject(err);
       }
     );
 
-    // Limpia los interceptores al desmontar
-    return () => {
-      axiosReq.interceptors.request.eject(requestInterceptor);
-      axiosRes.interceptors.response.eject(responseInterceptor);
-    };
+    // Interceptor para respuestas
+    axiosRes.interceptors.response.use(
+      (response) => response,
+      async (err) => {
+        if (err.response?.status === 401) {
+          try {
+            await axios.post("/dj-rest-auth/token/refresh/"); // Intenta refrescar el token
+          } catch (err) {
+            setCurrentUser((prevCurrentUser) => {
+              if (prevCurrentUser) {
+                history.push("/signin");
+              }
+              return null;
+            });
+          }
+          return axios(err.config); // Reintenta la solicitud con el nuevo token
+        }
+        return Promise.reject(err);
+      }
+    );
   }, [history]);
 
   return (
