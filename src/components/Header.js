@@ -14,16 +14,25 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("/dj-rest-auth/logout/");
-      localStorage.removeItem("access_token");
-      localStorage.removeItem("refresh_token");
-      setCurrentUser(null); // Limpia el estado del usuario
-    } catch (err) {
-      console.error("Error signing out:", err);
+      // Realiza la solicitud al endpoint de logout
+      await axios.post("dj-rest-auth/logout/", {}, { withCredentials: true });
+
+      // Limpia el estado del usuario actual
+      setCurrentUser(null);
+
+      // Elimina cualquier token almacenado en localStorage
+      localStorage.removeItem("refreshToken");
+      localStorage.removeItem("accessToken");
+
+      console.log("Sign out successful!");
+    } catch (error) {
+      console.error(
+        "Error signing out:",
+        error.response?.data || error.message
+      );
     }
   };
 
-  // Enlaces visibles para usuarios autenticados
   const loggedInIcons = (
     <>
       <NavLink
@@ -73,7 +82,9 @@ const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
-        <NavLink to="/"></NavLink>
+        <NavLink to="/" className={styles.NavLogo}>
+          Harmonize
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">

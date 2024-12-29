@@ -1,24 +1,22 @@
 /* NavBar.module.css */
 
-/* Estilo general del NavBar */
 .NavBar {
-  background-color: #215738; /* Verde moderno */
-  padding: 0.8rem 1.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  font-family: "Poppins", sans-serif; /* Fuente estilizada */
+  background-color: #2e4c40; /* Verde oscuro consistente */
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  font-family: "Poppins", sans-serif;
 }
 
-/* Estilo para el nombre de la app */
 .AppName {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: #f8f9fa;
   letter-spacing: 1px;
   transition: color 0.3s ease;
 }
 
 .AppName:hover {
-  color: #f0f8ff; /* Un azul claro al pasar el ratón */
+  color: #b2d8b2; /* Verde claro en hover */
   cursor: pointer;
 }
 
@@ -26,25 +24,25 @@
 .NavLink {
   color: #f8f9fa;
   font-size: 1.1rem;
-  margin: 0 0.8rem;
+  margin: 0 1rem;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .NavLink:hover {
-  color: #b2d8b2; /* Verde claro */
-  transform: translateY(-3px);
+  color: #b2d8b2;
+  transform: translateY(-2px);
 }
 
 .Active {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #f8f9fa;
   padding-bottom: 2px;
 }
 
 /* Nombre del usuario */
 .Username {
   font-size: 1.1rem;
-  color: #f0f8ff;
+  color: #f8f9fa;
   margin-right: 1rem;
 }
 
@@ -52,53 +50,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
-  color: white;
-}
-
-.HeaderLoggedIn span {
-  font-weight: bold;
 }
 
 .LogoutButton {
-  background-color: #d9534f;
+  background-color: #d9534f; /* Rojo */
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .LogoutButton:hover {
-  background-color: #c9302c;
-}
-
-/* HeroSection.module.css */
-
-/* Estilos generales */
-.heroContainer {
-  display: flex;
-  height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.heroLeft {
-  flex: 1;
-  padding: 40px;
-  background-color: #2e4c40;
-  color: white;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
-  }
-
-  .heroLeft,
-  .heroRight {
-    width: 100%;
-    padding: 20px;
-  }
+  background-color: #c9302c; /* Más oscuro en hover */
+  transform: scale(1.05); /* Ligera ampliación */
 }

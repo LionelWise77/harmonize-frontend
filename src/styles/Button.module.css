@@ -1,3 +1,4 @@
+/* Botón global */
 .Button {
   background-color: #2e4c40;
   color: white;
@@ -5,15 +6,17 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .Button:hover {
   background-color: #6b8e8e;
+  transform: translateY(-2px);
 }
 
+/* Botón ancho */
 .Wide {
-  width: 100%;
+  width: 100%; /* Botón toma toda la anchura */
 }
 
 .ButtonGlobal {
@@ -24,38 +27,23 @@
   font-size: 1rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .ButtonGlobal:hover {
   background-color: #a0c1b8;
+  transform: translateY(-2px);
 }
 
-/* HeroSection.module.css */
-
-/* Estilos generales */
-.heroContainer {
-  display: flex;
-  height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.heroLeft {
-  flex: 1;
-  padding: 40px;
-  background-color: #2e4c40;
-  color: white;
-}
-
-/* Media Queries */
+/* Media Queries para Responsividad */
 @media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
+  .Button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 
-  .heroLeft,
-  .heroRight {
-    width: 100%;
-    padding: 20px;
+  .ButtonGlobal {
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 }

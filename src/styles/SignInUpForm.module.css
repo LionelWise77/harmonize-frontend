@@ -5,8 +5,8 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background-color: #2e4c40; /* Fondo verde oscuro */
   box-sizing: border-box;
-  background-color: #2e4c40; /* Color de fondo similar al Hero */
 }
 
 /* Encabezado */
@@ -14,45 +14,71 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #2e4c40;
+  color: #ffffff; /* Texto blanco para contraste */
 }
 
 /* Contenedor del formulario */
 .FormContainer {
   width: 100%;
-  max-width: 400px; /* Limita el ancho del formulario */
-  background-color: #ffffff;
+  max-width: 400px;
+  background-color: #ffffff; /* Fondo blanco */
   border-radius: 8px;
   padding: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centra el contenido */
 }
 
-/* Input Fields */
+/* Título del formulario */
+.FormTitle {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #2e4c40; /* Verde principal */
+  font-weight: bold;
+}
+
+/* Campos de entrada */
 .Input {
   border: 1px solid #d4e4e4;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 15px;
   width: 100%;
-  box-sizing: border-box;
   font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Botón de Submit */
+.Input:focus {
+  outline: none;
+  border-color: #6b8e8e; /* Verde suave */
+  box-shadow: 0 0 5px rgba(107, 142, 142, 0.5);
+}
+
+/* Mensajes de error */
+.ErrorMessage {
+  color: #d9534f; /* Rojo para errores */
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+/* Botón de acción */
 .Button {
-  background-color: #6b8e8e;
+  background-color: #6b8e8e; /* Verde suave */
   color: white;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
   font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .Button:hover {
-  background-color: #a0c1b8;
+  background-color: #a0c1b8; /* Verde más claro */
+  transform: translateY(-2px); /* Efecto de elevación */
 }
 
 /* Enlace */
@@ -60,21 +86,21 @@
   text-align: center;
   text-decoration: none;
   color: #2e4c40;
-  display: block;
   margin-top: 15px;
+  font-size: 1rem;
 }
 
 .Link span {
   font-weight: bold;
-  color: #6b8e8e;
+  color: #6b8e8e; /* Color complementario */
 }
 
-/* Columna Derecha con Imagen */
+/* Columna derecha con imagen */
 .SignUpCol {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
+  background-color: #f8f9fa; /* Fondo claro */
   height: 100%;
 }
 
@@ -84,9 +110,11 @@
   border-radius: 8px;
 }
 
+/* Hero Buttons (reutilizado para consistencia) */
 .heroButtons {
   display: flex;
   gap: 10px;
+  justify-content: center;
   margin-top: 20px;
 }
 
@@ -96,64 +124,17 @@
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .heroButton:hover {
   background-color: #a0c1b8;
+  transform: translateY(-2px);
 }
 
+/* Contenedor general */
 .Content {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.FormTitle {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2e4c40;
-}
-
-.Input:focus {
-  outline: none;
-  border-color: #6b8e8e;
-  box-shadow: 0 0 5px rgba(107, 142, 142, 0.5);
-}
-
-.ErrorMessage {
-  color: #d9534f;
-  margin-top: -10px;
-  margin-bottom: 15px;
-  font-size: 0.9rem;
-}
-
-/* HeroSection.module.css */
-
-/* Estilos generales */
-.heroContainer {
-  display: flex;
-  height: 100vh;
-  background-color: #f8f9fa;
-}
-
-.heroLeft {
-  flex: 1;
-  padding: 40px;
-  background-color: #2e4c40;
-  color: white;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-  .heroContainer {
-    flex-direction: column;
-  }
-
-  .heroLeft,
-  .heroRight {
-    width: 100%;
-    padding: 20px;
-  }
 }

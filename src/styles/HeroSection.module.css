@@ -1,10 +1,13 @@
+/* HeroSection.module.css */
+
 .heroContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #f0f8ff;
   height: 100vh;
+  background-color: #f8f9fa; /* Fondo claro para elegancia */
   padding: 20px;
 }
 
@@ -13,15 +16,16 @@
 }
 
 .heroTitle {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 1rem;
+  color: #2e4c40; /* Verde principal */
+  margin-bottom: 1.5rem;
+  font-family: "Lora", serif; /* Toque elegante */
 }
 
 .heroSubtitle {
   font-size: 1.2rem;
-  color: #34495e;
+  color: #6b8e8e;
   margin-bottom: 2rem;
   font-style: italic;
 }
@@ -37,13 +41,14 @@
   font-size: 1rem;
   font-weight: bold;
   color: white;
-  background-color: #3498db;
+  background-color: #2e4c40; /* Verde oscuro */
   border: none;
   border-radius: 5px;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .heroButton:hover {
-  background-color: #2980b9;
+  background-color: #215738; /* Más oscuro en hover */
+  transform: translateY(-2px);
 }

@@ -11,13 +11,12 @@ The frontend of the Harmonize Daily Planner is a React application designed to p
 1. [Features](#features)
 2. [Visual Overview](#visual-overview)
 3. [Technologies Used](#technologies-used)
-4. [Contributing](#contributing)
-5. [Testing](#testing)
-6. [Unfixed Bugs](#unfixed-bugs)
-7. [Deployment](#deployment)
-8. [Credits](#credits)
-9. [Content](#content)
-10. [Media](#media)
+4. [Testing](#testing)
+5. [Unfixed Bugs](#unfixed-bugs)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
+8. [Content](#content)
+9. [Media](#media)
 
 ### **Features**
 
@@ -78,7 +77,9 @@ cd frontend
 
 ## Install Dependencies
 
-- npm install
+```
+npm install
+```
 
 ## Configure Axios Base URL
 
@@ -88,7 +89,9 @@ cd frontend
 
   ## Run the development Server
 
-  - npm start
+```
+  npm start
+```
 
 ## Available Routes
 
@@ -145,3 +148,7 @@ i share my Credits , wiht my Mentor Dick, the tutors from Code Institute and som
 ### Media
 
 - The photos used on the home and sign up page are from [photos source](https://www.pexels.com/search/natural/)
+
+```
+
+```
