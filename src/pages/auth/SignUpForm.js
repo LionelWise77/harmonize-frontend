@@ -5,15 +5,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
-import {
-  Form,
-  Button,
-  Image,
-  Col,
-  Row,
-  Container,
-  Alert,
-} from "react-bootstrap";
+import { Form, Button, Alert, Row, Col, Container } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -26,7 +18,6 @@ const SignUpForm = () => {
   const { username, email, password1, password2 } = signUpData;
 
   const [errors, setErrors] = useState({});
-
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -40,7 +31,7 @@ const SignUpForm = () => {
     event.preventDefault();
     try {
       await axios.post("/dj-rest-auth/registration/", signUpData);
-      history.push("/signin"); // Redirige a la página de inicio de sesión
+      history.push("/signin");
     } catch (err) {
       setErrors(err.response?.data || {});
     }
@@ -48,12 +39,11 @@ const SignUpForm = () => {
 
   return (
     <Row className={styles.Row}>
-      <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4 `}>
+      <Col className="d-flex justify-content-center">
+        <div className={styles.FormContainer}>
           <h1 className={styles.Header}>Sign Up</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="text"
@@ -62,15 +52,18 @@ const SignUpForm = () => {
                 value={username}
                 onChange={handleChange}
               />
+              {errors.username?.map((message, idx) => (
+                <Alert
+                  key={idx}
+                  variant="warning"
+                  className={styles.ErrorMessage}
+                >
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert variant="warning" key={idx}>
-                {message}
-              </Alert>
-            ))}
 
             <Form.Group controlId="email">
-              <Form.Label className="d-none">Email</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="email"
@@ -79,15 +72,18 @@ const SignUpForm = () => {
                 value={email}
                 onChange={handleChange}
               />
+              {errors.email?.map((message, idx) => (
+                <Alert
+                  key={idx}
+                  variant="warning"
+                  className={styles.ErrorMessage}
+                >
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.email?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
 
             <Form.Group controlId="password1">
-              <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
@@ -96,15 +92,18 @@ const SignUpForm = () => {
                 value={password1}
                 onChange={handleChange}
               />
+              {errors.password1?.map((message, idx) => (
+                <Alert
+                  key={idx}
+                  variant="warning"
+                  className={styles.ErrorMessage}
+                >
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
 
             <Form.Group controlId="password2">
-              <Form.Label className="d-none">Confirm Password</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="password"
@@ -113,17 +112,18 @@ const SignUpForm = () => {
                 value={password2}
                 onChange={handleChange}
               />
+              {errors.password2?.map((message, idx) => (
+                <Alert
+                  key={idx}
+                  variant="warning"
+                  className={styles.ErrorMessage}
+                >
+                  {message}
+                </Alert>
+              ))}
             </Form.Group>
-            {errors.password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
 
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
-              type="submit"
-            >
+            <Button className={styles.Button} type="submit">
               Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
@@ -132,22 +132,10 @@ const SignUpForm = () => {
               </Alert>
             ))}
           </Form>
-        </Container>
-
-        <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signin">
-            Already have an account? <span>Sign in</span>
-          </Link>
-        </Container>
-      </Col>
-      <Col
-        md={6}
-        className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
-      >
-        <Image
-          className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero2.jpg"}
-        />
+          <p className={styles.Link}>
+            Already have an account? <Link to="/signin">Sign in</Link>
+          </p>
+        </div>
       </Col>
     </Row>
   );

@@ -1,48 +1,43 @@
-/* Contenedor principal */
+/* Contenedor Principal */
 .Row {
-  height: 100vh;
+  height: 100vh; /* Ocupa toda la pantalla */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: #2e4c40; /* Fondo verde oscuro */
+  background-image: url("/src/assets/images/cld-sample-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   box-sizing: border-box;
 }
 
-/* Encabezado */
-.Header {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #ffffff; /* Texto blanco para contraste */
-}
-
-/* Contenedor del formulario */
 .FormContainer {
-  width: 100%;
   max-width: 400px;
-  background-color: #ffffff; /* Fondo blanco */
-  border-radius: 8px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco translúcido */
+  border-radius: 12px;
   padding: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Centra el contenido */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Título del formulario */
-.FormTitle {
-  font-size: 1.8rem;
+/* Título del Formulario */
+.Header {
+  font-size: 2.5rem;
+  font-weight: bold;
   margin-bottom: 20px;
   color: #2e4c40; /* Verde principal */
-  font-weight: bold;
 }
 
-/* Campos de entrada */
+/* Campos de Entrada */
 .Input {
-  border: 1px solid #d4e4e4;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
   width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #d4e4e4;
+  border-radius: 8px;
   font-size: 1rem;
   box-sizing: border-box;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -54,7 +49,7 @@
   box-shadow: 0 0 5px rgba(107, 142, 142, 0.5);
 }
 
-/* Mensajes de error */
+/* Mensajes de Error */
 .ErrorMessage {
   color: #d9534f; /* Rojo para errores */
   margin-top: -10px;
@@ -62,79 +57,59 @@
   font-size: 0.9rem;
 }
 
-/* Botón de acción */
+/* Botón de Acción */
 .Button {
-  background-color: #6b8e8e; /* Verde suave */
+  background-color: #2e4c40; /* Verde oscuro */
   color: white;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
   width: 100%;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .Button:hover {
-  background-color: #a0c1b8; /* Verde más claro */
-  transform: translateY(-2px); /* Efecto de elevación */
+  background-color: #6b8e8e; /* Verde más claro */
+  transform: translateY(-3px); /* Efecto de elevación */
 }
 
 /* Enlace */
 .Link {
-  text-align: center;
   text-decoration: none;
-  color: #2e4c40;
-  margin-top: 15px;
   font-size: 1rem;
+  color: #2e4c40; /* Verde */
+  margin-top: 15px;
+  display: inline-block;
+  transition: color 0.3s ease;
 }
 
-.Link span {
-  font-weight: bold;
-  color: #6b8e8e; /* Color complementario */
+.Link:hover {
+  color: #6b8e8e; /* Verde más suave */
 }
 
-/* Columna derecha con imagen */
+/* Imagen Lateral */
 .SignUpCol {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa; /* Fondo claro */
-  height: 100%;
 }
 
-.SignUpCol img {
+.FillerImage {
   max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
-/* Hero Buttons (reutilizado para consistencia) */
-.heroButtons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 20px;
-}
+@media (max-width: 768px) {
+  .FormContainer {
+    max-width: 90%; /* Ajusta el ancho en pantallas pequeñas */
+    padding: 20px;
+  }
 
-.heroButton {
-  text-decoration: none;
-  background-color: #6b8e8e;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.heroButton:hover {
-  background-color: #a0c1b8;
-  transform: translateY(-2px);
-}
-
-/* Contenedor general */
-.Content {
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  .Row {
+    padding: 10px; /* Reduce el espacio alrededor */
+  }
 }

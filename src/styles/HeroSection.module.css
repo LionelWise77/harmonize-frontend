@@ -1,14 +1,12 @@
 /* HeroSection.module.css */
 
 .heroContainer {
+  background: linear-gradient(135deg, #a0c1b8, #f8f9fa);
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 100vh;
-  background-color: #f8f9fa; /* Fondo claro para elegancia */
-  padding: 20px;
 }
 
 .heroContent {
