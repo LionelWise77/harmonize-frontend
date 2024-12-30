@@ -1,5 +1,8 @@
+// Importaciones necesarias
 import jwtDecode from "jwt-decode";
-import { axiosReq } from "./api/axiosDefaults";
+import { axiosReq, axiosRes } from "./api/axiosDefaults";
+import { useContext } from "react";
+import { CurrentUserContext } from "./contexts/CurrentUserContext";
 
 // Obtener más datos de una API paginada
 export const fetchMoreData = async (resource, setResource) => {
@@ -21,7 +24,6 @@ export const fetchMoreData = async (resource, setResource) => {
   }
 };
 
-// Guardar la marca de tiempo del token de actualización
 export const setTokenTimestamp = (data) => {
   try {
     if (data?.refresh_token) {
@@ -45,4 +47,44 @@ export const shouldRefreshToken = () => {
 // Eliminar la marca de tiempo del token
 export const removeTokenTimestamp = () => {
   localStorage.removeItem("refreshTokenTimestamp");
+};
+
+// Refrescar el token de acceso usando axios
+export const refreshToken = async () => {
+  try {
+    const { data } = await axiosRes.post("/dj-rest-auth/token/refresh/");
+    setTokenTimestamp(data);
+    return data.access_token;
+  } catch (err) {
+    console.error("Error refreshing token:", err);
+    removeTokenTimestamp();
+    throw err;
+  }
+};
+
+export const useCurrentUser = () => {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+
+  const updateCurrentUser = async () => {
+    try {
+      const { data } = await axiosReq.get("/dj-rest-auth/user/");
+      setCurrentUser(data);
+    } catch (err) {
+      console.error("Error fetching current user:", err);
+      setCurrentUser(null);
+    }
+  };
+
+  return { currentUser, setCurrentUser, updateCurrentUser };
+};
+
+// Cerrar sesión y limpiar datos
+export const logoutUser = (setCurrentUser) => {
+  try {
+    removeTokenTimestamp();
+    setCurrentUser(null);
+    localStorage.clear();
+  } catch (err) {
+    console.error("Error during logout:", err);
+  }
 };
