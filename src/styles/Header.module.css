@@ -1,68 +1,75 @@
-/* NavBar.module.css */
-
+/* Estilo general del Navbar */
 .NavBar {
-  background-color: #2e4c40; /* Verde oscuro consistente */
-  padding: 1rem 1.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  font-family: "Poppins", sans-serif;
+  background-color: #2d3e50; /* Fondo oscuro elegante */
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.AppName {
-  font-size: 2rem;
+.NavLogo {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #f8f9fa;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.AppName:hover {
-  color: #b2d8b2; /* Verde claro en hover */
-  cursor: pointer;
-}
-
-/* Enlaces del NavBar */
-.NavLink {
-  color: #f8f9fa;
-  font-size: 1.1rem;
-  margin: 0 1rem;
+  color: #ffffff;
   text-decoration: none;
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.NavLink:hover {
-  color: #b2d8b2;
-  transform: translateY(-2px);
-}
-
-.Active {
-  border-bottom: 2px solid #f8f9fa;
-  padding-bottom: 2px;
-}
-
-/* Nombre del usuario */
-.Username {
-  font-size: 1.1rem;
-  color: #f8f9fa;
   margin-right: 1rem;
 }
 
-.HeaderLoggedIn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.NavLogo:hover {
+  color: #4caf50; /* Color zen para hover */
+  text-decoration: none;
 }
 
-.LogoutButton {
-  background-color: #d9534f; /* Rojo */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+/* Enlaces del navbar */
+.NavLink {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.LogoutButton:hover {
-  background-color: #c9302c; /* Más oscuro en hover */
-  transform: scale(1.05); /* Ligera ampliación */
+.NavLink:hover {
+  background-color: #4caf50; /* Resalta en verde para hover */
+  color: #ffffff;
+}
+
+.Active {
+  background-color: #4caf50;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Alineación del navbar */
+.ml-auto {
+  margin-left: auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+/* Ajustes de iconos */
+.fas,
+.far {
+  margin-right: 0.5rem;
+}
+
+/* Para dispositivos móviles */
+@media (max-width: 768px) {
+  .NavBar {
+    padding: 0.5rem;
+  }
+
+  .NavLink {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .NavLogo {
+    font-size: 1.2rem;
+  }
 }
