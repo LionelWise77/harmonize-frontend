@@ -1,12 +1,12 @@
 /* Estilo general del Navbar */
 .NavBar {
-  background-color: #2d3e50; /* Fondo oscuro elegante */
-  padding: 0.5rem 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   width: 100%;
+  height: 70px; /* Este valor debe ser consistente */
   z-index: 1000;
+  background-color: #2d3e50;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .NavLogo {

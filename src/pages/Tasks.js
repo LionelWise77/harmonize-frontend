@@ -86,7 +86,7 @@ const Tasks = () => {
 
   return (
     <div className={styles.tasksContainer}>
-      <h1>Your Tasks</h1>
+      <h1>Task Manager</h1>
 
       {/* Mostrar errores si los hay */}
       {errors && (

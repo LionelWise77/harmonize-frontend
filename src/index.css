@@ -1,21 +1,13 @@
-/* Estilo base */
 body {
   margin: 0;
+  padding: 0;
   font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", sans-serif;
-  font-size: 16px; /* Ajusta según las necesidades */
-  color: #333; /* Texto más oscuro para mejor legibilidad */
-  background-color: #f5f5f5; /* Fondo sutilmente gris para elegancia */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  color: #333;
+  background-color: #f5f5f5;
 }
 
-/* Enlaces */
-a {
-  text-decoration: none;
-  color: #007f5f; /* Verde sofisticado */
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #005f45; /* Oscurecer verde en hover */
+.pageContent {
+  margin-top: 70px; /* Ajusta este valor según la altura del Navbar */
+  padding: 1rem; /* Opcional para agregar espaciado interno */
 }

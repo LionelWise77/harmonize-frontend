@@ -14,13 +14,10 @@ const NavBar = () => {
 
   const handleSignOut = async () => {
     try {
-      // Realiza la solicitud al endpoint de logout
       await axios.post("dj-rest-auth/logout/", {}, { withCredentials: true });
 
-      // Limpia el estado del usuario actual
       setCurrentUser(null);
 
-      // Elimina cualquier token almacenado en localStorage
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
 
@@ -42,13 +39,7 @@ const NavBar = () => {
       >
         <i className="fas fa-tasks"></i>Tasks
       </NavLink>
-      <NavLink
-        className={styles.NavLink}
-        activeClassName={styles.Active}
-        to="/tasks/create"
-      >
-        <i className="far fa-plus-square"></i>New Task
-      </NavLink>
+
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
