@@ -15,7 +15,7 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const { data } = await axios.get("tasks/");
+        const { data } = await axios.get("api/tasks/");
         setTasks(data.results);
       } catch (err) {
         console.error("Error fetching tasks:", err);
@@ -30,7 +30,7 @@ const Tasks = () => {
   const handleCreateTask = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("tasks/", newTask);
+      const { data } = await axios.post("api/tasks/", newTask);
       setTasks((prevTasks) => [...prevTasks, data]);
       setNewTask({ title: "", due_date: "", priority: "Low" });
     } catch (err) {
@@ -42,7 +42,7 @@ const Tasks = () => {
   // Maneja la actualización de una tarea
   const handleTaskUpdated = async (id, updatedTask) => {
     try {
-      const { data } = await axios.put(`tasks/${id}/`, updatedTask);
+      const { data } = await axios.put(`api/tasks/${id}/`, updatedTask);
       setTasks((prevTasks) =>
         prevTasks.map((task) => (task.id === id ? data : task))
       );
@@ -55,7 +55,7 @@ const Tasks = () => {
   // Maneja la eliminación de una tarea
   const handleTaskDeleted = async (id) => {
     try {
-      await axios.delete(`tasks/${id}/`);
+      await axios.delete(`api/tasks/${id}/`);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     } catch (err) {
       console.error("Error deleting task:", err);
