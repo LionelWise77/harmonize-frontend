@@ -6,8 +6,8 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     title: initialData.title || "",
     description: initialData.description || "",
     due_date: initialData.due_date || "",
-    start_time: initialData.start_time || "",
-    end_time: initialData.end_time || "",
+    start_time: initialData.start_time || "", // Reemplaza due_time con start_time
+    end_time: initialData.end_time || "", // Agrega end_time
     priority: initialData.priority || "M",
     status: initialData.status || "open",
   });
@@ -20,19 +20,21 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     }));
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      title: "",
+      description: "",
+      due_date: "",
+      start_time: "", // Resetea start_time
+      end_time: "", // Resetea end_time
+      priority: "M",
+      status: "open",
+    });
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(formData, () =>
-      setFormData({
-        title: "",
-        description: "",
-        due_date: "",
-        start_time: "",
-        end_time: "",
-        priority: "M",
-        status: "open",
-      })
-    );
+    handleSubmit(formData, handleResetForm);
   };
 
   return (
@@ -46,7 +48,6 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
           onChange={handleChange}
           required
           className={styles.formControl}
-          placeholder="Enter task title"
         />
       </div>
       <div className={styles.formGroup}>
@@ -56,7 +57,6 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
           value={formData.description}
           onChange={handleChange}
           className={styles.formControl}
-          placeholder="Add a brief description"
         />
       </div>
       <div className={styles.row}>
@@ -121,7 +121,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
         </div>
       </div>
       <div className={styles.formActions}>
-        <button type="submit" className={styles.btnPrimary}>
+        <button type="submit" className={styles.btnModern}>
           Add Task
         </button>
         {onCancel && (

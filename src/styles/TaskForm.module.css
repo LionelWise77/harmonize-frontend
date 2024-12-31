@@ -1,75 +1,80 @@
+/* Contenedor del formulario */
 .taskForm {
-  background-color: #fdfdfd;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  max-width: 400px;
-  margin: 0 auto;
-  font-family: "Roboto", sans-serif;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-label {
-  font-size: 0.95rem;
-  color: #34495e;
-  font-weight: 500;
-}
-
-.formControl {
-  padding: 0.6rem;
-  font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  gap: 1rem;
   background-color: #ffffff;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.2rem;
+  border-radius: 4px; /* Más cuadrado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px; /* Más compacto */
+  margin: 0 auto;
 }
 
-.formControl:focus {
-  border-color: #5cb85c;
-  box-shadow: 0 0 6px rgba(92, 184, 92, 0.5);
-}
-
+/* Fila para agrupar campos */
 .row {
   display: flex;
   gap: 1rem;
 }
 
-.btnPrimary {
-  background-color: #5cb85c;
+/* Grupo de formulario */
+.formGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+/* Campo de entrada */
+.formControl {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Más cuadrado */
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formControl:focus {
+  border-color: #4caf50; /* Verde moderno */
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+}
+
+/* Botón moderno */
+.btnModern {
+  background-color: #4caf50;
   color: white;
-  padding: 0.8rem;
+  padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px; /* Más cuadrado */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btnPrimary:hover {
-  background-color: #4cae4c;
-  transform: translateY(-2px);
+.btnModern:hover {
+  background-color: #43a047;
+  transform: translateY(-2px); /* Efecto de hover */
 }
 
+/* Botón secundario */
 .btnSecondary {
-  background-color: #d9534f;
-  color: white;
-  padding: 0.8rem;
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px; /* Más cuadrado */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .btnSecondary:hover {
-  background-color: #c9302c;
-  transform: translateY(-2px);
+  background-color: #d6d6d6;
 }
