@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/HeroSection.module.css";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 const HeroSection = () => {
   const [quote, setQuote] = useState("");
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     // Lista de frases motivadoras y conscientes
@@ -26,12 +28,15 @@ const HeroSection = () => {
         <h1 className={styles.heroTitle}>Harmonize Daily Planner</h1>
         <p className={styles.heroSubtitle}>{quote}</p>
         <div className={styles.heroButtons}>
-          <Link to="/tasks" className={styles.heroButton}>
-            View Tasks
-          </Link>
-          <Link to="/tasks/create" className={styles.heroButton}>
-            Create Task
-          </Link>
+          {currentUser ? (
+            <Link to="/tasks" className={styles.heroButton}>
+              Task Manager
+            </Link>
+          ) : (
+            <Link to="/signin" className={styles.heroButton}>
+              Get Started
+            </Link>
+          )}
         </div>
       </div>
     </div>
