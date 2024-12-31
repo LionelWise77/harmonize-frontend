@@ -1,29 +1,49 @@
 /* HeroSection.module.css */
 
+.heroGreekBackground {
+  background-image: url("../assets/images/greek-myth.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* Mantén el texto blanco para contraste */
+  font-family: "Georgia", serif;
+}
+
 .heroContainer {
-  background: linear-gradient(135deg, #a0c1b8, #f8f9fa);
+  background-image: url("../assets/images/greek-myth.jpg");
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff; /* Texto blanco */
+  font-family: "Georgia", serif;
 }
 
 .heroContent {
   max-width: 600px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Fondo semitransparente para resaltar el texto */
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .heroTitle {
   font-size: 3rem;
   font-weight: bold;
-  color: #2e4c40; /* Verde principal */
+  color: #fdf5e6; /* Color crema para mayor contraste */
   margin-bottom: 1.5rem;
   font-family: "Lora", serif; /* Toque elegante */
 }
 
 .heroSubtitle {
   font-size: 1.2rem;
-  color: #6b8e8e;
+  color: #ffd700; /* Amarillo pálido para destacar las frases */
   margin-bottom: 2rem;
   font-style: italic;
 }
@@ -47,6 +67,6 @@
 }
 
 .heroButton:hover {
-  background-color: #215738; /* Más oscuro en hover */
+  background-color: #ffd700; /* Más oscuro en hover */
   transform: translateY(-2px);
 }

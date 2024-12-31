@@ -8,22 +8,23 @@ const HeroSection = () => {
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
-    // Lista de frases motivadoras y conscientes
+    // Lista de frases filosóficas y motivadoras
     const quotes = [
-      "Harmony begins with a single step towards clarity.",
-      "Small consistent actions lead to big transformations.",
-      "Breathe, focus, and align your energy with your goals.",
-      "Your journey is unique—embrace every moment.",
-      "Stay organized, stay balanced, stay harmonized.",
-      "Progress, not perfection, is the goal.",
-      "Every day is an opportunity to realign and thrive.",
+      "Happiness depends upon ourselves. - Aristotle",
+      "The unexamined life is not worth living. - Socrates",
+      "He who has overcome his fears will truly be free. - Aristotle",
+      "Knowing yourself is the beginning of all wisdom. - Aristotle",
+      "We are what we repeatedly do. Excellence, then, is not an act, but a habit. - Aristotle",
+      "Man is the measure of all things. - Protagoras",
+      "Poverty is the parent of revolution and crime. - Aristotle",
+      "Do not spoil what you have by desiring what you have not. - Epicurus",
     ];
     // Selecciona una frase aleatoria
     setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
   }, []);
 
   return (
-    <div className={styles.heroContainer}>
+    <div className={`${styles.heroContainer} ${styles.HerogreekBackground}`}>
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>Harmonize Daily Planner</h1>
         <p className={styles.heroSubtitle}>{quote}</p>
