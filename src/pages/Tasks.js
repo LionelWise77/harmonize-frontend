@@ -9,9 +9,8 @@ const Tasks = () => {
   const [errors, setErrors] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const [expandedTaskId, setExpandedTaskId] = useState(null); // To show/hide description
+  const [expandedTaskId, setExpandedTaskId] = useState(null);
 
-  // Fetch tasks when the component mounts
   useEffect(() => {
     const fetchTasks = async () => {
       try {
@@ -32,8 +31,8 @@ const Tasks = () => {
       setTasks((prevTasks) => [...prevTasks, data]);
       setSuccessMessage("Task added successfully!");
       resetForm();
-      setShowForm(false); // Hide the form after creating a task
-      setTimeout(() => setSuccessMessage(""), 3000); // Clear the message after 3 seconds
+      setShowForm(false);
+      setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Error creating task:", err);
       setErrors(err.response?.data || "An error occurred.");
@@ -46,9 +45,9 @@ const Tasks = () => {
       setTasks((prevTasks) =>
         prevTasks.map((task) => (task.id === id ? data : task))
       );
-      setEditingTask(null); // Exit edit mode
+      setEditingTask(null);
       setSuccessMessage("Task updated successfully!");
-      setTimeout(() => setSuccessMessage(""), 3000); // Clear the message
+      setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Error updating task:", err);
       setErrors("Error updating task. Please try again.");
@@ -60,7 +59,7 @@ const Tasks = () => {
       await axios.delete(`api/tasks/${id}/`);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
       setSuccessMessage("Task deleted successfully!");
-      setTimeout(() => setSuccessMessage(""), 3000); // Clear the message
+      setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Error deleting task:", err);
       setErrors("Error deleting task. Please try again.");
@@ -70,17 +69,16 @@ const Tasks = () => {
   return (
     <div className={styles.tasksContainer}>
       <h1>Task Manager</h1>
+      <p className={styles.subHeader}>Welcome</p>
 
       {successMessage && (
         <p className={styles.successMessage}>{successMessage}</p>
       )}
 
-      {/* Show errors if any */}
       {errors && (
         <p className={`${styles.error} alert alert-danger`}>{errors}</p>
       )}
 
-      {/* Button to toggle the form */}
       <button
         onClick={() => setShowForm(!showForm)}
         className={styles.createTaskButton}
@@ -88,7 +86,6 @@ const Tasks = () => {
         {showForm ? "Hide Form" : "Create Task"}
       </button>
 
-      {/* Task creation form */}
       {showForm && (
         <TaskForm
           handleSubmit={handleCreateTask}
@@ -96,7 +93,6 @@ const Tasks = () => {
         />
       )}
 
-      {/* Display task list */}
       {tasks.length > 0 ? (
         tasks.map((task) => (
           <div
@@ -114,39 +110,57 @@ const Tasks = () => {
                 onCancel={() => setEditingTask(null)}
               />
             ) : (
-              <div>
-                <div className={styles.taskHeader}>
-                  <strong>{task.title}</strong> - Priority: {task.priority}
+              <div className={styles.taskContent}>
+                <h2 className={styles.taskTitle}>{task.title}</h2>
+                <div className={styles.taskRow}>
+                  <div className={styles.left}>
+                    <p>
+                      <strong>Due Date:</strong>{" "}
+                      {task.due_date
+                        ? new Date(task.due_date).toLocaleDateString()
+                        : "Not set"}
+                    </p>
+                  </div>
+                  <div className={styles.right}>
+                    <p>
+                      <strong>Priority:</strong>{" "}
+                      {task.priority === "H"
+                        ? "High"
+                        : task.priority === "M"
+                        ? "Medium"
+                        : "Low"}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <strong>Due Date:</strong>{" "}
-                  {task.due_date
-                    ? new Date(task.due_date).toLocaleDateString()
-                    : "Not set"}
+                <div className={styles.taskRow}>
+                  <div className={styles.left}>
+                    <p>
+                      <strong>Start Time:</strong>{" "}
+                      {task.start_time
+                        ? new Date(
+                            `1970-01-01T${task.start_time}`
+                          ).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        : "Not set"}
+                    </p>
+                  </div>
+                  <div className={styles.right}>
+                    <p>
+                      <strong>End Time:</strong>{" "}
+                      {task.end_time
+                        ? new Date(
+                            `1970-01-01T${task.end_time}`
+                          ).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
+                        : "Not set"}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <strong>Start Time:</strong>{" "}
-                  {task.start_time
-                    ? new Date(
-                        `1970-01-01T${task.start_time}`
-                      ).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })
-                    : "Not set"}
-                </div>
-                <div>
-                  <strong>End Time:</strong>{" "}
-                  {task.end_time
-                    ? new Date(
-                        `1970-01-01T${task.end_time}`
-                      ).toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })
-                    : "Not set"}
-                </div>
-                <div>
+                <div className={styles.center}>
                   <button
                     className={styles.toggleDescription}
                     onClick={() =>
