@@ -7,13 +7,13 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [editingTask, setEditingTask] = useState(null);
   const [errors, setErrors] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
 
   // Fetch de tareas al montar el componente
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const { data } = await axios.get("api/tasks/");
-        console.log("Fetched tasks:", data.results); // Verifica los datos
         setTasks(data.results);
       } catch (err) {
         console.error("Error fetching tasks:", err);
@@ -24,33 +24,27 @@ const Tasks = () => {
     fetchTasks();
   }, []);
 
-  // Maneja la creación de una nueva tarea
-  const handleCreateTask = async (taskData) => {
+  const handleCreateTask = async (taskData, resetForm) => {
     try {
-      console.log("Creating task with data:", taskData);
       const { data } = await axios.post("api/tasks/", taskData);
-      console.log("Created task:", data);
       setTasks((prevTasks) => [...prevTasks, data]);
+      setSuccessMessage("Task added! Well done!");
+      resetForm(); //
+      setTimeout(() => setSuccessMessage(""), 3000); // Elimina el mensaje después de 3 segundos
     } catch (err) {
-      if (err.response) {
-        console.error("Server response data:", err.response.data);
-        setErrors(err.response.data);
-      } else {
-        console.error("Unexpected error:", err);
-      }
+      console.error("Error creating task:", err);
+      setErrors(err.response?.data || "An error occurred.");
     }
   };
 
   // Maneja la actualización de una tarea
   const handleUpdateTask = async (id, updatedTask) => {
     try {
-      console.log("Updating task with data:", updatedTask);
       const { data } = await axios.put(`api/tasks/${id}/`, updatedTask);
-      console.log("Updated task:", data);
       setTasks((prevTasks) =>
         prevTasks.map((task) => (task.id === id ? data : task))
       );
-      setEditingTask(null);
+      setEditingTask(null); // Salir del modo edición
     } catch (err) {
       console.error("Error updating task:", err);
       setErrors("Error updating task. Please try again.");
@@ -60,9 +54,7 @@ const Tasks = () => {
   // Maneja la eliminación de una tarea
   const handleDeleteTask = async (id) => {
     try {
-      console.log("Deleting task with id:", id);
       await axios.delete(`api/tasks/${id}/`);
-      console.log("Deleted task with id:", id);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
     } catch (err) {
       console.error("Error deleting task:", err);
@@ -70,23 +62,13 @@ const Tasks = () => {
     }
   };
 
-  // Convert priority code to readable format
-  const getPriorityLabel = (priority) => {
-    switch (priority) {
-      case "L":
-        return "Low";
-      case "M":
-        return "Medium";
-      case "H":
-        return "High";
-      default:
-        return "Unknown";
-    }
-  };
-
   return (
     <div className={styles.tasksContainer}>
       <h1>Task Manager</h1>
+
+      {successMessage && (
+        <p className={styles.successMessage}>{successMessage}</p>
+      )}
 
       {/* Mostrar errores si los hay */}
       {errors && (
@@ -111,17 +93,18 @@ const Tasks = () => {
             ) : (
               <div>
                 <div>
-                  <strong>{task.title}</strong> - Priority:{" "}
-                  {getPriorityLabel(task.priority)}
+                  <strong>{task.title}</strong> - Priority: {task.priority}
                 </div>
                 <div>Due Date: {task.due_date}</div>
                 <div className={styles.taskActions}>
+                  {/* Botón para editar */}
                   <button
                     className="btn btn-warning btn-sm"
                     onClick={() => setEditingTask(task)}
                   >
                     Edit
                   </button>
+                  {/* Botón para eliminar */}
                   <button
                     className="btn btn-danger btn-sm"
                     onClick={() => handleDeleteTask(task.id)}

@@ -19,9 +19,20 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel, resetForm }) => {
     }));
   };
 
+  const handleResetForm = () => {
+    setFormData({
+      title: "",
+      description: "",
+      due_date: "",
+      due_time: "",
+      priority: "M",
+      status: "open",
+    });
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(formData);
+    handleSubmit(formData, handleResetForm);
     if (resetForm) {
       setFormData({
         title: "",
