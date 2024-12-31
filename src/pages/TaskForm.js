@@ -6,7 +6,8 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     title: initialData.title || "",
     description: initialData.description || "",
     due_date: initialData.due_date || "",
-    due_time: initialData.due_time || "",
+    start_time: initialData.start_time || "",
+    end_time: initialData.end_time || "",
     priority: initialData.priority || "M",
     status: initialData.status || "open",
   });
@@ -19,20 +20,19 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     }));
   };
 
-  const handleResetForm = () => {
-    setFormData({
-      title: "",
-      description: "",
-      due_date: "",
-      due_time: "",
-      priority: "M",
-      status: "open",
-    });
-  };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(formData, handleResetForm);
+    handleSubmit(formData, () =>
+      setFormData({
+        title: "",
+        description: "",
+        due_date: "",
+        start_time: "",
+        end_time: "",
+        priority: "M",
+        status: "open",
+      })
+    );
   };
 
   return (
@@ -46,6 +46,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
           onChange={handleChange}
           required
           className={styles.formControl}
+          placeholder="Enter task title"
         />
       </div>
       <div className={styles.formGroup}>
@@ -55,6 +56,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
           value={formData.description}
           onChange={handleChange}
           className={styles.formControl}
+          placeholder="Add a brief description"
         />
       </div>
       <div className={styles.row}>
@@ -69,11 +71,21 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label>Due Time</label>
+          <label>Start Time</label>
           <input
             type="time"
-            name="due_time"
-            value={formData.due_time}
+            name="start_time"
+            value={formData.start_time}
+            onChange={handleChange}
+            className={styles.formControl}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label>End Time</label>
+          <input
+            type="time"
+            name="end_time"
+            value={formData.end_time}
             onChange={handleChange}
             className={styles.formControl}
           />
@@ -109,7 +121,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
         </div>
       </div>
       <div className={styles.formActions}>
-        <button type="submit" className={styles.btnModern}>
+        <button type="submit" className={styles.btnPrimary}>
           Add Task
         </button>
         {onCancel && (

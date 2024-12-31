@@ -1,108 +1,117 @@
-/* Contenedor principal */
 .tasksContainer {
-  max-width: 800px;
-  margin: 70px auto 0;
+  max-width: 700px;
+  margin: 2rem auto;
   padding: 2rem;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Título */
-.tasksContainer h1 {
-  text-align: center;
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Estilo para los errores */
-.error {
-  color: #d9534f;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1.5rem;
-  background-color: #f8d7da;
-  padding: 0.8rem;
-  border: 1px solid #f5c6cb;
-  border-radius: 4px;
-}
-
-/* Caja de tareas */
-.taskBox {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
   background-color: #ffffff;
-  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.createTaskButton {
+  background-color: #5cb85c;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 1rem auto;
+}
+
+.createTaskButton:hover {
+  background-color: #4cae4c;
+  transform: translateY(-2px);
+}
+
+.taskBox {
+  background-color: #fdfdfd;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
 
 .taskBox:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
 }
 
-/* Estilo para las acciones de las tareas */
+.taskHeader {
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.taskDescription {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
 .taskActions {
   display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-.taskActions button {
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
+.btnEdit {
+  background-color: #f39c12;
+  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.taskActions .btn-warning {
-  background-color: #ffc107;
-  color: #fff;
+.btnEdit:hover {
+  background-color: #e67e22;
 }
 
-.taskActions .btn-warning:hover {
-  background-color: #e0a800;
-}
-
-.taskActions .btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.taskActions .btn-danger:hover {
-  background-color: #c82333;
-}
-
-/* Tareas vacías */
-.tasksContainer p {
-  text-align: center;
-  color: #555;
-  font-size: 1.1rem;
-}
-
-/* Botón de edición y eliminación */
-.btn-warning,
-.btn-danger {
+.btnDelete {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
   padding: 0.6rem 1.2rem;
-  font-size: 0.9rem;
-  border-radius: 4px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.successMessage {
-  color: #4caf50;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 1rem;
-  background-color: #e8f5e9;
-  padding: 10px;
-  border: 1px solid #c8e6c9;
+.btnDelete:hover {
+  background-color: #c0392b;
+}
+
+.toggleDescription {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
   border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggleDescription:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }

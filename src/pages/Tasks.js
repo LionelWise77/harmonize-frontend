@@ -8,6 +8,8 @@ const Tasks = () => {
   const [editingTask, setEditingTask] = useState(null);
   const [errors, setErrors] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
+  const [showForm, setShowForm] = useState(false);
+  const [expandedTaskId, setExpandedTaskId] = useState(null); // Para mostrar/ocultar descripción
 
   // Fetch de tareas al montar el componente
   useEffect(() => {
@@ -29,7 +31,8 @@ const Tasks = () => {
       const { data } = await axios.post("api/tasks/", taskData);
       setTasks((prevTasks) => [...prevTasks, data]);
       setSuccessMessage("Task added! Well done!");
-      resetForm(); //
+      resetForm();
+      setShowForm(false); // Ocultar el formulario después de crear la tarea
       setTimeout(() => setSuccessMessage(""), 3000); // Elimina el mensaje después de 3 segundos
     } catch (err) {
       console.error("Error creating task:", err);
@@ -37,7 +40,6 @@ const Tasks = () => {
     }
   };
 
-  // Maneja la actualización de una tarea
   const handleUpdateTask = async (id, updatedTask) => {
     try {
       const { data } = await axios.put(`api/tasks/${id}/`, updatedTask);
@@ -51,7 +53,6 @@ const Tasks = () => {
     }
   };
 
-  // Maneja la eliminación de una tarea
   const handleDeleteTask = async (id) => {
     try {
       await axios.delete(`api/tasks/${id}/`);
@@ -75,13 +76,31 @@ const Tasks = () => {
         <p className={`${styles.error} alert alert-danger`}>{errors}</p>
       )}
 
+      {/* Botón para mostrar el formulario */}
+      <button
+        onClick={() => setShowForm(!showForm)}
+        className={styles.createTaskButton}
+      >
+        {showForm ? "Hide Form" : "Create Task"}
+      </button>
+
       {/* Formulario para crear tareas */}
-      <TaskForm handleSubmit={handleCreateTask} />
+      {showForm && (
+        <TaskForm
+          handleSubmit={handleCreateTask}
+          onCancel={() => setShowForm(false)}
+        />
+      )}
 
       {/* Mostrar lista de tareas */}
       {tasks.length > 0 ? (
         tasks.map((task) => (
-          <div key={task.id} className={styles.taskBox}>
+          <div
+            key={task.id}
+            className={`${styles.taskBox} ${
+              task.status === "completed" ? styles.taskCompleted : ""
+            }`}
+          >
             {editingTask?.id === task.id ? (
               <TaskForm
                 initialData={task}
@@ -92,22 +111,59 @@ const Tasks = () => {
               />
             ) : (
               <div>
-                <div>
+                <div className={styles.taskHeader}>
                   <strong>{task.title}</strong> - Priority: {task.priority}
                 </div>
-                <div>Due Date: {task.due_date}</div>
-                <div>Due Time: {task.due_time}</div>
-                <div className={styles.taskActions}>
-                  {/* Botón para editar */}
+                <div>
+                  <strong>Start Time:</strong>{" "}
+                  {task.start_time
+                    ? new Date(
+                        `1970-01-01T${task.start_time}`
+                      ).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : "Not set"}
+                </div>
+                <div>
+                  <strong>End Time:</strong>{" "}
+                  {task.end_time
+                    ? new Date(
+                        `1970-01-01T${task.end_time}`
+                      ).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : "Not set"}
+                </div>
+                <div>
                   <button
-                    className="btn btn-warning btn-sm"
+                    className={styles.toggleDescription}
+                    onClick={() =>
+                      setExpandedTaskId(
+                        expandedTaskId === task.id ? null : task.id
+                      )
+                    }
+                  >
+                    {expandedTaskId === task.id
+                      ? "Hide Description"
+                      : "Show Description"}
+                  </button>
+                  {expandedTaskId === task.id && (
+                    <p className={styles.taskDescription}>
+                      {task.description || "No description provided"}
+                    </p>
+                  )}
+                </div>
+                <div className={styles.taskActions}>
+                  <button
+                    className={styles.btnEdit}
                     onClick={() => setEditingTask(task)}
                   >
                     Edit
                   </button>
-                  {/* Botón para eliminar */}
                   <button
-                    className="btn btn-danger btn-sm"
+                    className={styles.btnDelete}
                     onClick={() => handleDeleteTask(task.id)}
                   >
                     Delete
