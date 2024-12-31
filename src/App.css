@@ -1,36 +1,26 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Arial", sans-serif; /* O cualquier fuente que estés usando */
+/* Contenedor Principal */
+.App {
+  text-align: center;
 }
 
-.pageContent {
-  margin-top: 70px; /* Este valor debe coincidir con la altura del Navbar */
-  padding: 1rem; /* Espaciado interno opcional */
+/* Enlaces */
+.App-link {
+  color: #007f5f; /* Verde principal */
+  transition: color 0.3s ease;
 }
 
-.NavBar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 70px; /* Asegúrate de que la altura sea consistente */
-  background-color: #2d3e50;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.App-link:hover {
+  color: #005f45; /* Verde más oscuro */
 }
 
-.NavLogo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.NavLink {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.NavLink:hover {
-  color: #4caf50;
+/* Cabecera */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import Form from "react-bootstrap/Form";
@@ -8,11 +9,12 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
 import styles from "../../styles/SignInUpForm.module.css";
-import appStyles from "../../App.module.css";
+
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
+  const history = useHistory();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -30,6 +32,7 @@ function SignInForm() {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
       setCurrentUser(data.user);
+      history.push("/tasks"); // Redirige a la página de tareas
     } catch (err) {
       setErrors(err.response?.data || {});
     }

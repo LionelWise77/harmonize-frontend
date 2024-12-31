@@ -11,7 +11,7 @@ export const axiosRes = axios.create();
 // Add a request interceptor to include the token in the headers
 axiosReq.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Adjust this line based on how you store the token
+    const token = localStorage.getItem("access_token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/TaskForm.module.css";
 
-const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
+const TaskForm = ({ initialData = {}, handleSubmit, onCancel, resetForm }) => {
   const [formData, setFormData] = useState({
     title: initialData.title || "",
     description: initialData.description || "",
@@ -22,6 +22,16 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     handleSubmit(formData);
+    if (resetForm) {
+      setFormData({
+        title: "",
+        description: "",
+        due_date: "",
+        due_time: "",
+        priority: "M",
+        status: "open",
+      });
+    }
   };
 
   return (
