@@ -1,104 +1,80 @@
-/* Contenedor principal del formulario */
+/* Contenedor del formulario */
 .taskForm {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
-  font-family: "Arial", sans-serif;
+  gap: 1rem;
+  background-color: #ffffff;
+  padding: 1.2rem;
+  border-radius: 4px; /* Más cuadrado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px; /* Más compacto */
+  margin: 0 auto;
+}
+
+/* Fila para agrupar campos */
+.row {
+  display: flex;
+  gap: 1rem;
 }
 
 /* Grupo de formulario */
 .formGroup {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
 }
 
-.formGroup label {
-  font-weight: bold;
+label {
+  font-size: 0.9rem;
   color: #333;
-  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
 }
 
-/* Controles de formulario */
+/* Campo de entrada */
 .formControl {
-  padding: 0.6rem;
-  font-size: 0.95rem;
-  border: 1px solid #d0d0d0;
-  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Más cuadrado */
   background-color: #f9f9f9;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .formControl:focus {
-  outline: none;
-  border-color: #4caf50;
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+  border-color: #4caf50; /* Verde moderno */
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
 }
 
-/* Acciones del formulario */
-.formActions {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-/* Botones */
-.btnPrimary {
+/* Botón moderno */
+.btnModern {
   background-color: #4caf50;
-  color: #fff;
+  color: white;
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px; /* Más cuadrado */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btnPrimary:hover {
+.btnModern:hover {
   background-color: #43a047;
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Efecto de hover */
 }
 
+/* Botón secundario */
 .btnSecondary {
   background-color: #e0e0e0;
   color: #333;
   padding: 0.6rem 1.2rem;
   font-size: 0.9rem;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px; /* Más cuadrado */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .btnSecondary:hover {
   background-color: #d6d6d6;
-  transform: translateY(-2px);
-}
-
-/* Sombra y transiciones */
-.taskForm input,
-.taskForm select,
-.taskForm textarea {
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.taskForm input:focus,
-.taskForm select:focus,
-.taskForm textarea:focus {
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
-}
-
-/* Espaciado compacto */
-.taskForm textarea {
-  resize: vertical;
 }

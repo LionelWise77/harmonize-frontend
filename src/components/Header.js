@@ -76,6 +76,9 @@ const NavBar = () => {
         <NavLink to="/" className={styles.NavLogo}>
           Harmonize
         </NavLink>
+        {currentUser && (
+          <span className={styles.userName}>Hi, {currentUser.username}!</span>
+        )}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-left">
