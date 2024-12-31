@@ -96,6 +96,7 @@ const Tasks = () => {
                   <strong>{task.title}</strong> - Priority: {task.priority}
                 </div>
                 <div>Due Date: {task.due_date}</div>
+                <div>Due Time: {task.due_time}</div>
                 <div className={styles.taskActions}>
                   {/* Botón para editar */}
                   <button

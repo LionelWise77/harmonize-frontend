@@ -28,17 +28,15 @@ export const CurrentUserProvider = ({ children }) => {
     handleMount();
   }, []);
 
-  // Configuración de interceptores para manejar tokens y errores
   useMemo(() => {
-    // Interceptor para solicitudes
     axiosReq.interceptors.request.use(
       async (config) => {
         try {
-          await axios.post("/dj-rest-auth/token/refresh/"); // Ajusta esta ruta si es necesario
+          await axios.post("/dj-rest-auth/token/refresh/");
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
-              history.push("/signin"); // Redirige al login si el usuario no está autenticado
+              history.push("/signin");
             }
             return null;
           });
@@ -51,7 +49,6 @@ export const CurrentUserProvider = ({ children }) => {
       }
     );
 
-    // Interceptor para respuestas
     axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
