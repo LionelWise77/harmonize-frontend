@@ -32,9 +32,40 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     });
   };
 
+  const validateDueDate = (dueDate) => {
+    const currentDate = new Date();
+    if (new Date(dueDate) < currentDate) {
+      alert("Date cannot be before the current date.");
+      return false;
+    }
+    return true;
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(formData, handleResetForm);
+    const dueDate = formData.due_date;
+    if (!validateDueDate(dueDate)) {
+      return;
+    }
+    // Proceed with form submission
+    fetch("/api/create-task", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.due_date) {
+          alert(data.due_date[0]);
+        } else {
+          handleSubmit(formData, handleResetForm);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (
