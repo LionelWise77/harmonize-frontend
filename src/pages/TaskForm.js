@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "../api/axiosDefaults";
 import styles from "../styles/TaskForm.module.css";
 
 const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
@@ -41,31 +42,24 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
     return true;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     const dueDate = formData.due_date;
     if (!validateDueDate(dueDate)) {
       return;
     }
     // Proceed with form submission
-    fetch("/api/create-task", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.due_date) {
-          alert(data.due_date[0]);
-        } else {
-          handleSubmit(formData, handleResetForm);
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    try {
+      const response = await axios.post("/api/tasks/", formData);
+      const data = response.data;
+      if (data.due_date) {
+        alert(data.due_date[0]);
+      } else {
+        handleSubmit(data, handleResetForm);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
