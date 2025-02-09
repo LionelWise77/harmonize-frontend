@@ -66,6 +66,24 @@ const Tasks = () => {
     }
   };
 
+  const handleToggleComplete = async (id, currentStatus) => {
+    try {
+      const updatedStatus =
+        currentStatus === "completed" ? "open" : "completed";
+      const { data } = await axios.patch(`api/tasks/${id}/`, {
+        status: updatedStatus,
+      });
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => (task.id === id ? data : task))
+      );
+      setSuccessMessage("Task status updated successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (err) {
+      console.error("Error updating task status:", err);
+      setErrors("Error updating task status. Please try again.");
+    }
+  };
+
   return (
     <div className={styles.tasksContainer}>
       <h1>Task Manager</h1>
@@ -192,6 +210,16 @@ const Tasks = () => {
                   >
                     Delete
                   </button>
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={task.status === "completed"}
+                      onChange={() =>
+                        handleToggleComplete(task.id, task.status)
+                      }
+                    />
+                    Completed
+                  </label>
                 </div>
               </div>
             )}
