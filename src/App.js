@@ -15,6 +15,7 @@ import {
 // Components
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import CalendarView from "./components/Calendar.View";
 
 // Páginas
 import SignInForm from "./pages/auth/SignInForm";
@@ -54,6 +55,7 @@ function App() {
             {/* Autenticación */}
             <Route path="/signin" component={SignInForm} />
             <Route path="/signup" component={SignUpForm} />
+            <Route path="/" component={CalendarView} />
 
             {/* Funcionalidad Principal (Rutas Protegidas) */}
             <ProtectedRoute path="/tasks" component={Tasks} />

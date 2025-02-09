@@ -1,17 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../api/axiosDefaults";
 import styles from "../styles/TaskForm.module.css";
 
 const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
-    title: initialData.title || "",
-    description: initialData.description || "",
-    due_date: initialData.due_date || "",
-    start_time: initialData.start_time || "", // Reemplaza due_time con start_time
-    end_time: initialData.end_time || "", // Agrega end_time
-    priority: initialData.priority || "M",
-    status: initialData.status || "open",
+    title: initialData?.title || "",
+    description: initialData?.description || "",
+    due_date: initialData?.due_date || "",
+    start_time: initialData?.start_time || "",
+    end_time: initialData?.end_time || "",
+    priority: initialData?.priority || "M",
+    status: initialData?.status || "open",
   });
+
+  useEffect(() => {
+    setFormData({
+      title: initialData?.title || "",
+      description: initialData?.description || "",
+      due_date: initialData?.due_date || "",
+      start_time: initialData?.start_time || "",
+      end_time: initialData?.end_time || "",
+      priority: initialData?.priority || "M",
+      status: initialData?.status || "open",
+    });
+  }, [initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,8 +38,8 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
       title: "",
       description: "",
       due_date: "",
-      start_time: "", // Resetea start_time
-      end_time: "", // Resetea end_time
+      start_time: "",
+      end_time: "",
       priority: "M",
       status: "open",
     });
@@ -147,7 +159,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
       </div>
       <div className={styles.formActions}>
         <button type="submit" className={styles.btnModern}>
-          Add Task
+          {initialData?.id ? "Update Task" : "Add Task"}
         </button>
         {onCancel && (
           <button
