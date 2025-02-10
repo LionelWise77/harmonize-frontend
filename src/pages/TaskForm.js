@@ -14,15 +14,25 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
   });
 
   useEffect(() => {
-    setFormData({
-      title: initialData?.title || "",
-      description: initialData?.description || "",
-      due_date: initialData?.due_date || "",
-      start_time: initialData?.start_time || "",
-      end_time: initialData?.end_time || "",
-      priority: initialData?.priority || "M",
-      status: initialData?.status || "open",
-    });
+    let isMounted = true; // Track whether the component is mounted
+
+    // Reset form data when initialData changes
+    if (isMounted) {
+      setFormData({
+        title: initialData?.title || "",
+        description: initialData?.description || "",
+        due_date: initialData?.due_date || "",
+        start_time: initialData?.start_time || "",
+        end_time: initialData?.end_time || "",
+        priority: initialData?.priority || "M",
+        status: initialData?.status || "open",
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      isMounted = false; // Mark the component as unmounted
+    };
   }, [initialData]);
 
   const handleChange = (e) => {
@@ -57,18 +67,22 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const dueDate = formData.due_date;
+
     if (!validateDueDate(dueDate)) {
       return;
     }
-    // Proceed with form submission
+
     try {
-      const response = await axios.post("/api/tasks/", formData);
-      const data = response.data;
-      if (data.due_date) {
-        alert(data.due_date[0]);
+      if (initialData?.id) {
+        // If initialData has an ID, it means we're updating an existing task
+        await handleSubmit(initialData.id, formData);
       } else {
-        handleSubmit(data, handleResetForm);
+        // Otherwise, we're creating a new task
+        await handleSubmit(formData, handleResetForm);
       }
+
+      handleResetForm();
+      onCancel(); // Close the modal after creating or editing the task
     } catch (error) {
       console.error("Error:", error);
     }

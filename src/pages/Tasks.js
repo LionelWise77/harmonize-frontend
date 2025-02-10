@@ -9,29 +9,31 @@ const Tasks = () => {
   const [errors, setErrors] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const [expandedTaskId, setExpandedTaskId] = useState(null);
 
+  // Función para obtener las tareas
+  const fetchTasks = async () => {
+    try {
+      const { data } = await axios.get("api/tasks/");
+      setTasks(data.results);
+    } catch (err) {
+      console.error("Error fetching tasks:", err);
+      setErrors("Error fetching tasks. Please try again.");
+    }
+  };
+
+  // Llamar a fetchTasks cuando se monta el componente
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const { data } = await axios.get("api/tasks/");
-        setTasks(data.results);
-      } catch (err) {
-        console.error("Error fetching tasks:", err);
-        setErrors("Error fetching tasks. Please try again.");
-      }
-    };
-
     fetchTasks();
   }, []);
 
+  // Crear una nueva tarea
   const handleCreateTask = async (taskData, resetForm) => {
     try {
       const { data } = await axios.post("api/tasks/", taskData);
       setTasks((prevTasks) => [...prevTasks, data]);
       setSuccessMessage("Task added successfully!");
       resetForm();
-      setShowForm(false);
+      setShowForm(false); // Cerrar el modal
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
       console.error("Error creating task:", err);
@@ -39,13 +41,14 @@ const Tasks = () => {
     }
   };
 
+  // Editar una tarea existente
   const handleUpdateTask = async (id, updatedTask) => {
     try {
       const { data } = await axios.put(`api/tasks/${id}/`, updatedTask);
       setTasks((prevTasks) =>
         prevTasks.map((task) => (task.id === id ? data : task))
       );
-      setEditingTask(null);
+      setEditingTask(null); // Cerrar el modal de edición
       setSuccessMessage("Task updated successfully!");
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err) {
@@ -54,6 +57,7 @@ const Tasks = () => {
     }
   };
 
+  // Eliminar una tarea
   const handleDeleteTask = async (id) => {
     try {
       await axios.delete(`api/tasks/${id}/`);
@@ -66,6 +70,7 @@ const Tasks = () => {
     }
   };
 
+  // Cambiar el estado de una tarea (completada o no)
   const handleToggleComplete = async (id, currentStatus) => {
     try {
       const updatedStatus =
@@ -92,7 +97,6 @@ const Tasks = () => {
       {successMessage && (
         <p className={styles.successMessage}>{successMessage}</p>
       )}
-
       {errors && (
         <p className={`${styles.error} alert alert-danger`}>{errors}</p>
       )}
@@ -130,103 +134,33 @@ const Tasks = () => {
             ) : (
               <div className={styles.taskContent}>
                 <h2 className={styles.taskTitle}>{task.title}</h2>
-                <div className={styles.taskRow}>
-                  <div className={styles.left}>
-                    <p>
-                      <strong>Due Date:</strong>{" "}
-                      {task.due_date
-                        ? new Date(task.due_date).toLocaleDateString()
-                        : "Not set"}
-                    </p>
-                  </div>
-                  <div className={styles.right}>
-                    <p>
-                      <strong>Priority:</strong>{" "}
-                      {task.priority === "H"
-                        ? "High"
-                        : task.priority === "M"
-                        ? "Medium"
-                        : "Low"}
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.taskRow}>
-                  <div className={styles.left}>
-                    <p>
-                      <strong>Start Time:</strong>{" "}
-                      {task.start_time
-                        ? new Date(
-                            `1970-01-01T${task.start_time}`
-                          ).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })
-                        : "Not set"}
-                    </p>
-                  </div>
-                  <div className={styles.right}>
-                    <p>
-                      <strong>End Time:</strong>{" "}
-                      {task.end_time
-                        ? new Date(
-                            `1970-01-01T${task.end_time}`
-                          ).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })
-                        : "Not set"}
-                    </p>
-                  </div>
-                </div>
-                <div className={styles.center}>
-                  <button
-                    className={styles.toggleDescription}
-                    onClick={() =>
-                      setExpandedTaskId(
-                        expandedTaskId === task.id ? null : task.id
-                      )
-                    }
-                  >
-                    {expandedTaskId === task.id
-                      ? "Hide Description"
-                      : "Show Description"}
-                  </button>
-                  {expandedTaskId === task.id && (
-                    <p className={styles.taskDescription}>
-                      {task.description || "No description provided"}
-                    </p>
-                  )}
-                </div>
+                <p className={styles.taskDate}>Due: {task.due_date}</p>
                 <div className={styles.taskActions}>
                   <button
-                    className={styles.btnEdit}
                     onClick={() => setEditingTask(task)}
+                    className={styles.editButton}
                   >
                     Edit
                   </button>
                   <button
-                    className={styles.btnDelete}
                     onClick={() => handleDeleteTask(task.id)}
+                    className={styles.deleteButton}
                   >
                     Delete
                   </button>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={task.status === "completed"}
-                      onChange={() =>
-                        handleToggleComplete(task.id, task.status)
-                      }
-                    />
-                    Completed
-                  </label>
+                  <button
+                    onClick={() => handleToggleComplete(task.id, task.status)}
+                    className={styles.toggleButton}
+                  >
+                    {task.status === "completed" ? "Reopen" : "Complete"}
+                  </button>
                 </div>
               </div>
             )}
           </div>
         ))
       ) : (
-        <p>No tasks available.</p>
+        <p>No tasks found.</p>
       )}
     </div>
   );

@@ -23,8 +23,8 @@ const CalendarView = () => {
         const formattedEvents = data.results.map((task) => ({
           id: task.id,
           title: task.title,
-          start: new Date(task.due_date + "T" + task.start_time),
-          end: new Date(task.due_date + "T" + task.end_time),
+          start: new Date(`${task.due_date}T${task.start_time}`),
+          end: new Date(`${task.due_date}T${task.end_time}`),
           allDay: false,
           task,
         }));
@@ -44,16 +44,21 @@ const CalendarView = () => {
 
   const handleCreateTask = async (taskData, resetForm) => {
     try {
+      console.log("Creating task with data:", taskData); // Debugging
       const { data } = await axios.post("api/tasks/", taskData);
+      console.log("Task created successfully:", data); // Debugging
+
       const newEvent = {
         id: data.id,
         title: data.title,
-        start: new Date(data.due_date + "T" + data.start_time),
-        end: new Date(data.due_date + "T" + data.end_time),
+        start: new Date(`${data.due_date}T${data.start_time}`),
+        end: new Date(`${data.due_date}T${data.end_time}`),
         allDay: false,
         task: data,
       };
-      setEvents((prevEvents) => [...prevEvents, newEvent]);
+
+      console.log("New event to be added:", newEvent); // Debugging
+      setEvents((prevEvents) => [...prevEvents, newEvent]); // Update state
       resetForm();
       setShowForm(false);
     } catch (err) {
@@ -67,8 +72,8 @@ const CalendarView = () => {
       const updatedEvent = {
         id: data.id,
         title: data.title,
-        start: new Date(data.due_date + "T" + data.start_time),
-        end: new Date(data.due_date + "T" + data.end_time),
+        start: new Date(`${data.due_date}T${data.start_time}`),
+        end: new Date(`${data.due_date}T${data.end_time}`),
         allDay: false,
         task: data,
       };
@@ -128,7 +133,7 @@ const CalendarView = () => {
         overlayClassName={styles.overlay}
       >
         <TaskForm
-          initialData={selectedEvent}
+          initialData={selectedEvent || {}}
           handleSubmit={selectedEvent ? handleUpdateTask : handleCreateTask}
           onCancel={() => setShowForm(false)}
         />
