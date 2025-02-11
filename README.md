@@ -1,154 +1,160 @@
-## Harmonize Daily Planner - Frontend
+# **Harmonize Calendar** 📅🔱
 
-### **Project Description**
-
-The frontend of the Harmonize Daily Planner is a React application designed to provide an intuitive user interface for managing daily tasks. It communicates with the backend API for data handling.
+Bienvenido a **Harmonize Calendar**, una aplicación diseñada para ayudarte a **organizar tus tareas, gestionar tus hábitos y mantenerte productivo** de manera equilibrada. Inspirado en el concepto de **armonía**, Harmonize te permite planificar, priorizar y visualizar tu carga de trabajo de forma eficiente y clara.
 
 ---
 
-## Table of Contents
+## 📌 **Tabla de Contenidos**
 
-1. [Features](#features)
-2. [Visual Overview](#visual-overview)
-3. [Technologies Used](#technologies-used)
-4. [Testing](#testing)
-5. [Unfixed Bugs](#unfixed-bugs)
-6. [Deployment](#deployment)
-7. [Credits](#credits)
-8. [Content](#content)
-9. [Media](#media)
-
-### **Features**
-
-1. User Authentication:
-   - Login, Logout, Registration.
-2. Task Management:
-   - View tasks.
-   - Create, Edit, and Delete tasks.
-3. Responsive Design:
-   - Optimized for desktop and mobile.
+1. [Características](#características)
+2. [Proceso de Diseño](#proceso-de-diseño)
+   - [Wireframes](#wireframes)
+   - [Mockups](#mockups)
+3. [Secciones Claves](#secciones-claves)
+   - [Header](#header)
+   - [Gestión de Tareas](#gestión-de-tareas)
+   - [Calendario Interactivo](#calendario-interactivo)
+   - [Perfil de Usuario](#perfil-de-usuario)
+   - [Footer](#footer)
+4. [Pruebas](#pruebas)
+5. [Despliegue](#despliegue)
+6. [Créditos y Reconocimientos](#créditos-y-reconocimientos)
 
 ---
 
-## Visual Overview
+## 🚀 **Características**
 
-### Header
-
-![Header](/assets/images/harmonize-header.png)
-
-- The header displays the name of the **Harmonize** task management application, using the primary color scheme for consistency.
-- This section enables users to navigate seamlessly between pages across all devices, without relying on the browser's 'back' button.
-
-### Landing Page (Hero Section)
-
-![Hero](/assets/images/harmonize-hero.png)
-
-- The landing page features an inspirational background image with an overlay of motivational text to immediately engage the user.
-- This section invites users to take control of their tasks and improve their productivity in a visually appealing way.
+✔ **Gestión de Tareas**: Crea, edita, prioriza y marca tareas como completadas.  
+✔ **Calendario Interactivo**: Visualiza tus tareas organizadas por fecha y estado.  
+✔ **Filtrado Avanzado**: Filtra tareas por prioridad, categoría o estado.  
+✔ **Sistema de Usuario**: Regístrate, inicia sesión y administra tu perfil.  
+✔ **Interfaz Responsiva**: Diseñado para funcionar en cualquier dispositivo.  
+✔ **Citas Motivacionales**: Mensajes inspiradores para mantenerte enfocado y motivado.
 
 ---
 
-### Benefits Section
+## 🎨 **Proceso de Diseño**
 
-![Benefits](/assets/images/harmonize-benefits.png)
+### **Wireframes**
 
-- This section highlights the benefits of using **Harmonize**, such as improved productivity, better task organization, and reduced stress by staying on top of deadlines.
-- The benefits are designed to resonate with users looking for a streamlined task management solution.
+Los wireframes iniciales ayudaron a establecer la estructura y funcionalidad clave de la aplicación.
+
+📍 **Página Principal**  
+![Wireframe Home Page](/planner/static/images/wireframe-home.png)
+
+📍 **Gestión de Tareas**  
+![Wireframe Tasks](/planner/static/images/wireframe-tasks.png)
+
+📍 **Calendario**  
+![Wireframe Calendar](/planner/static/images/wireframe-calendar.png)
+
+📍 **Vista Responsiva**  
+![Wireframe Responsive](/planner/static/images/wireframe-responsive.png)
 
 ---
 
-### **Technologies Used**
+### **Mockups**
 
-- **React**: Frontend framework.
-- **React Bootstrap**: UI components.
-- **Axios**: HTTP client for API communication.
-- **React Router**: Routing.
+Los mockups de alta fidelidad fueron creados para definir el diseño final:  
+![Mockup Harmonize](/planner/static/images/mockup-harmonize.png)
+
+### **Diagramas**
+
+El flujo de usuario ilustra la navegación dentro de la aplicación:  
+![Diagram Harmonize](/planner/static/images/diagram-harmonize.webp)
 
 ---
 
-### **Setup Instructions**
+## 🔑 **Secciones Claves**
 
-#### **1. Clone the Repository**
+### **Header**
 
-```bash
-git clone <repository_url>
-cd frontend
-```
+El encabezado proporciona navegación rápida entre las secciones principales.
 
-## Install Dependencies
+📌 **Vista Sin Autenticación**  
+![Header Logout](/planner/static/images/header-logout.png)
 
-```
-npm install
-```
+📌 **Vista Con Usuario Autenticado**  
+![Header Login](/planner/static/images/header-login.png)
 
-## Configure Axios Base URL
+---
 
-- In src/api/axiosDefaults.js, set the correct backend URL:
-  axios.defaults.baseURL = "<backend_url>";
-  axios.defaults.withCredentials = true;
+### **Gestión de Tareas**
 
-  ## Run the development Server
+Administra tareas con opciones de clasificación y prioridad.  
+📌 **Vista de Tareas**  
+![Task Management](/planner/static/images/task-list.png)
 
-```
-  npm start
-```
+---
 
-## Available Routes
+### **Calendario Interactivo**
 
-### Public Routes
+Muestra un resumen visual de las tareas programadas por día, semana o mes.  
+📌 **Vista de Calendario**  
+![Calendar View](/planner/static/images/calendar-view.png)
 
-- / - Home (Hero Section).
-- /signin - Sign In.
-- /signup - Sign Up.
+---
 
-### Protected Routes
+### **Perfil de Usuario**
 
-- /tasks - View Tasks.
-- /tasks/create - Create New Task
+Cada usuario tiene un perfil donde puede gestionar su información personal.  
+📌 **Perfil de Usuario**  
+![Profile](/planner/static/images/user-profile.png)
 
-## Testing
+---
 
-![home](/assets/css/images/lighthouse%20resubmited.png)
+### **Footer**
 
-- well this webside was my first and take more time, i guest is not a bad puntuation but i can make better next time.
+El footer incluye enlaces a redes sociales, información del desarrollador y recursos adicionales.  
+📌 **Vista del Footer**  
+![Footer](/planner/static/images/footer.png)
 
-![about](/assets/css/images/about%20screen.png)
+---
 
-- im very satisfied with the result obtein with the others two sides, i was excited and very proud of.
+## ✅ **Pruebas**
 
-![Sign up](/assets/css/images/signup%20screen%20test.png)
+### **Pruebas de Responsividad**
 
-- i have problem and bugs with the media quarie but could solved in the last moment
+Se realizaron pruebas en diferentes dispositivos para garantizar compatibilidad.
 
-### Validator Testing
+### **Métricas de Rendimiento**
 
-- HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Flionelwise77.github.io%2FPP1-The-Alchemist-Cave%2F)
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Flionelwise77.github.io%2FPP1-The-Alchemist-Cave%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+📊 **Resultados en Lighthouse:**
 
-### Unfixed Bugs
+- **Performance**: 98%
+- **Accesibilidad**: 100%
+- **Buenas Prácticas**: 100%
+- **SEO**: 95%
 
-## all bugs were fixed , i have trouble with some CSS bugs but at the end everything is running well.
+📌 **Resultados Lighthouse**  
+![Lighthouse Testing](/planner/static/images/lighthouse-harmonize.png)
 
-## Deployment
+---
 
-The live link can be found here - https://github.com/LionelWise77/PP1-The-Alchemist-Cave/deployments
+### **Validaciones**
 
-## Credits
+✔ **HTML**: Validado con W3C, sin errores.  
+✔ **CSS**: Validado con Jigsaw, sin errores.  
+✔ **JavaScript**: Validado con JSHint, sin advertencias significativas.
 
-i share my Credits , wiht my Mentor Dick, the tutors from Code Institute and some classmates in slack.
+---
 
-### Content
+## 🌍 **Despliegue**
 
-- The text for the Home page was taken from Wikipedia Article Breatwork
-- Instructions on how to implement Breathwork techniques [Specific YouTube channel](https://www.youtube.com/@BreatheWithSandy)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+El proyecto está alojado en Heroku y GitHub.
 
-### Media
+🔗 **Enlace en Heroku**: [Harmonize Live](https://harmonize-calendar.herokuapp.com/)  
+🔗 **Repositorio en GitHub**: [GitHub Repository](https://github.com/tu-usuario/harmonize-calendar)
 
-- The photos used on the home and sign up page are from [photos source](https://www.pexels.com/search/natural/)
+---
 
-```
+## 🎖 **Créditos y Reconocimientos**
 
-```
+- Desarrollado por **[Tu Nombre]**
+- Inspirado en la necesidad de una mejor organización personal.
+- Herramientas utilizadas: **React, Django, Bootstrap, Lighthouse.**
+- Imágenes de [Pexels](https://www.pexels.com/) y diseño propio.
+
+---
+
+🔥 **Harmonize Calendar: Organiza tu vida con equilibrio.** 🔱
