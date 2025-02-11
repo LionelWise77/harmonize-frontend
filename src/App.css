@@ -1,21 +1,21 @@
-/* Contenedor Principal */
+/* 🎯 Contenedor Principal */
 .App {
   text-align: center;
 }
 
-/* Enlaces */
+/* 🎯 Enlaces */
 .App-link {
-  color: #007f5f; /* Verde principal */
+  color: #007f5f;
   transition: color 0.3s ease;
 }
 
 .App-link:hover {
-  color: #005f45; /* Verde más oscuro */
+  color: #005f45;
 }
 
-/* Cabecera */
+/* 🎯 Cabecera */
 .App-header {
-  background-color: #282c34;
+  background-color: #007f5f; /* Verde principal */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,4 +23,11 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+/* 🟢 Ajuste para responsive: texto visible en pantallas pequeñas */
+@media (max-width: 768px) {
+  .App-header {
+    color: #ffffff; /* Texto más claro para contraste */
+  }
 }

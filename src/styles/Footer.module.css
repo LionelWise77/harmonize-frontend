@@ -1,0 +1,54 @@
+.Footer {
+  background-color: #233d29;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.FooterLogo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4caf50;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.FooterLogo:hover {
+  color: #ffffff;
+}
+
+.Copy {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.SocialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.SocialIcons a {
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.SocialIcons a:hover {
+  color: #4caf50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .Footer {
+    text-align: center;
+    padding: 15px;
+  }
+
+  .Copy {
+    margin-bottom: 10px;
+  }
+}

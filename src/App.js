@@ -16,6 +16,7 @@ import {
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import CalendarView from "./components/Calendar.View";
+import Footer from "./components/Footer";
 
 // Páginas
 import SignInForm from "./pages/auth/SignInForm";
@@ -63,6 +64,9 @@ function App() {
             {/* 404 */}
             <Route render={() => <h1>404 - Page Not Found</h1>} />
           </Switch>
+
+          {/* Footer */}
+          <Footer />
         </div>
       </Router>
     </CurrentUserProvider>

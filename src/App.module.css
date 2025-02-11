@@ -1,11 +1,11 @@
-/* Hero para SignInForm */
+/* 🎯 Sección Hero */
 .heroContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh; /* Ajusta según tu diseño */
-  background-color: #f0f8f7; /* Fondo elegante */
+  height: 80vh;
+  background-color: #f0f8f7;
   padding: 20px;
   text-align: center;
 }
@@ -13,56 +13,10 @@
 .heroTitle {
   font-family: "Lora", serif;
   font-size: 2.5rem;
-  color: #2e4c40; /* Verde principal */
-  margin-bottom: 20px;
+  color: #2e4c40;
 }
 
 .heroQuote {
   font-size: 1.2rem;
-  color: #6b8e8e; /* Color complementario */
-}
-
-.taskBox {
-  background-color: #ffffff;
-  border: 1px solid #d4e4e4;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.taskDate {
-  font-size: 0.9rem;
-  color: #a1b0a8;
-}
-
-.taskDetails {
-  font-size: 1rem;
-  color: #2e4c40; /* Verde principal */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.taskDetails span {
-  margin-right: 5px;
-}
-
-.notFound {
-  text-align: center;
-  font-size: 1.8rem;
-  color: #ff6b6b;
-  margin-top: 20px;
-}
-
-.Content {
-  background-color: #ffffff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.FillerImage {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+  color: #6b8e8e;
 }

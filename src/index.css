@@ -8,6 +8,6 @@ body {
 }
 
 .pageContent {
-  margin-top: 70px; /* Ajusta este valor según la altura del Navbar */
-  padding: 1rem; /* Opcional para agregar espaciado interno */
+  margin-top: 70px;
+  padding: 1rem;
 }

@@ -1,9 +1,29 @@
 .calendarContainer {
   padding: 20px;
+  background-color: #f9f9f9; /* Un fondo claro para resaltar el calendario */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
 }
 
 .createTaskButton {
   margin-bottom: 20px;
+  padding: 10px 16px; /* Más espacio para que sea cómodo de pulsar */
+  background-color: #4caf50; /* Verde llamativo */
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.createTaskButton:hover {
+  background-color: #45a049; /* Un verde más oscuro en hover */
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+.createTaskButton:active {
+  transform: scale(0.98); /* Efecto al hacer clic */
 }
 
 .taskForm {

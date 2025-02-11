@@ -79,9 +79,9 @@ const NavBar = () => {
         {currentUser && (
           <span className={styles.userName}>Hi, {currentUser.username}!</span>
         )}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse className="navbar-nav">
+          <Nav className="ml-auto text-right">
             <NavLink
               exact
               className={styles.NavLink}
