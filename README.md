@@ -1,160 +1,163 @@
 # **Harmonize Calendar** 📅🔱
 
-Bienvenido a **Harmonize Calendar**, una aplicación diseñada para ayudarte a **organizar tus tareas, gestionar tus hábitos y mantenerte productivo** de manera equilibrada. Inspirado en el concepto de **armonía**, Harmonize te permite planificar, priorizar y visualizar tu carga de trabajo de forma eficiente y clara.
+Welcome to **Harmonize Calendar**, an application designed to help you **organize your tasks, manage habits, and stay productive** while maintaining balance. Inspired by the concept of **harmony**, Harmonize allows you to plan, prioritize, and visualize your workload efficiently and clearly.
 
 ---
 
-## 📌 **Tabla de Contenidos**
+## 📌 **Table of Contents**
 
-1. [Características](#características)
-2. [Proceso de Diseño](#proceso-de-diseño)
+1. [Features](#features)
+2. [Design Process](#design-process)
    - [Wireframes](#wireframes)
    - [Mockups](#mockups)
-3. [Secciones Claves](#secciones-claves)
+3. [Key Sections](#key-sections)
    - [Header](#header)
-   - [Gestión de Tareas](#gestión-de-tareas)
-   - [Calendario Interactivo](#calendario-interactivo)
-   - [Perfil de Usuario](#perfil-de-usuario)
+   - [Task Management](#task-management)
+   - [Interactive Calendar](#interactive-calendar)
+   - [User Profile](#user-profile)
    - [Footer](#footer)
-4. [Pruebas](#pruebas)
-5. [Despliegue](#despliegue)
-6. [Créditos y Reconocimientos](#créditos-y-reconocimientos)
+4. [Testing](#testing)
+5. [Deployment](#deployment)
+6. [Credits and Acknowledgments](#credits-and-acknowledgments)
 
 ---
 
-## 🚀 **Características**
+## 🚀 **Features**
 
-✔ **Gestión de Tareas**: Crea, edita, prioriza y marca tareas como completadas.  
-✔ **Calendario Interactivo**: Visualiza tus tareas organizadas por fecha y estado.  
-✔ **Filtrado Avanzado**: Filtra tareas por prioridad, categoría o estado.  
-✔ **Sistema de Usuario**: Regístrate, inicia sesión y administra tu perfil.  
-✔ **Interfaz Responsiva**: Diseñado para funcionar en cualquier dispositivo.  
-✔ **Citas Motivacionales**: Mensajes inspiradores para mantenerte enfocado y motivado.
+- **Navigation Bar**: Clean layout with links to tasks, calendar, user profiles, login, and logout.
+- **Task Management**: Create, categorize, and prioritize tasks with deadlines and status updates.
+- **Interactive Calendar**: View tasks, deadlines, and events in an easy-to-navigate calendar.
+- **User Authentication**: Secure login, registration, and profile management.
+- **Progress Tracking**: Mark completed tasks and analyze productivity trends.
 
 ---
 
-## 🎨 **Proceso de Diseño**
+## 🎨 **Design Process**
 
-### **Wireframes**
+### 📌 **Wireframes**
 
-Los wireframes iniciales ayudaron a establecer la estructura y funcionalidad clave de la aplicación.
+Wireframes were created to define the application’s layout and structure.
 
-📍 **Página Principal**  
+#### Home Page
+
 ![Wireframe Home Page](/planner/static/images/wireframe-home.png)
 
-📍 **Gestión de Tareas**  
-![Wireframe Tasks](/planner/static/images/wireframe-tasks.png)
+#### Task Manager
 
-📍 **Calendario**  
+![Wireframe Task Page](/planner/static/images/wireframe-tasks.png)
+
+#### Calendar View
+
 ![Wireframe Calendar](/planner/static/images/wireframe-calendar.png)
 
-📍 **Vista Responsiva**  
+#### Responsive Design
+
 ![Wireframe Responsive](/planner/static/images/wireframe-responsive.png)
 
----
+### 🎨 **Mockups**
 
-### **Mockups**
-
-Los mockups de alta fidelidad fueron creados para definir el diseño final:  
-![Mockup Harmonize](/planner/static/images/mockup-harmonize.png)
-
-### **Diagramas**
-
-El flujo de usuario ilustra la navegación dentro de la aplicación:  
-![Diagram Harmonize](/planner/static/images/diagram-harmonize.webp)
+High-fidelity mockups visualize the final design:  
+![Harmonize Mockup](/planner/static/images/mockup-harmonize.png)
 
 ---
 
-## 🔑 **Secciones Claves**
+## 🏗️ **Key Sections**
 
-### **Header**
+### 🔝 **Header**
 
-El encabezado proporciona navegación rápida entre las secciones principales.
+The **Harmonize Calendar** header includes easy navigation links and a **dynamic welcome message**.
 
-📌 **Vista Sin Autenticación**  
-![Header Logout](/planner/static/images/header-logout.png)
+- **Logged-Out View**:  
+  ![Header Logout](/planner/static/images/header-logout.png)
 
-📌 **Vista Con Usuario Autenticado**  
-![Header Login](/planner/static/images/header-login.png)
-
----
-
-### **Gestión de Tareas**
-
-Administra tareas con opciones de clasificación y prioridad.  
-📌 **Vista de Tareas**  
-![Task Management](/planner/static/images/task-list.png)
+- **Logged-In View**:  
+  ![Header Login](/planner/static/images/header-login.png)
 
 ---
 
-### **Calendario Interactivo**
+### ✅ **Task Management**
 
-Muestra un resumen visual de las tareas programadas por día, semana o mes.  
-📌 **Vista de Calendario**  
-![Calendar View](/planner/static/images/calendar-view.png)
-
----
-
-### **Perfil de Usuario**
-
-Cada usuario tiene un perfil donde puede gestionar su información personal.  
-📌 **Perfil de Usuario**  
-![Profile](/planner/static/images/user-profile.png)
+Organize and prioritize tasks efficiently.  
+![Task Manager](/planner/static/images/task-manager.png)
 
 ---
 
-### **Footer**
+### 📆 **Interactive Calendar**
 
-El footer incluye enlaces a redes sociales, información del desarrollador y recursos adicionales.  
-📌 **Vista del Footer**  
+View and manage tasks with a **drag-and-drop** calendar.  
+![Calendar](/planner/static/images/calendar.png)
+
+---
+
+### 🏠 **User Profile**
+
+Users can update their profile information and preferences.  
+![User Profile](/planner/static/images/user-profile.png)
+
+---
+
+### 📌 **Footer**
+
+The footer includes **social media links and developer credits**.  
 ![Footer](/planner/static/images/footer.png)
 
 ---
 
-## ✅ **Pruebas**
+## 🧪 **Testing**
 
-### **Pruebas de Responsividad**
+### 📱 **Responsiveness**
 
-Se realizaron pruebas en diferentes dispositivos para garantizar compatibilidad.
+The application was tested across various devices for compatibility.
 
-### **Métricas de Rendimiento**
-
-📊 **Resultados en Lighthouse:**
+### 📊 **Performance Metrics**
 
 - **Performance**: 98%
-- **Accesibilidad**: 100%
-- **Buenas Prácticas**: 100%
+- **Accessibility**: 100%
+- **Best Practices**: 100%
 - **SEO**: 95%
 
-📌 **Resultados Lighthouse**  
-![Lighthouse Testing](/planner/static/images/lighthouse-harmonize.png)
+![Lighthouse Testing](/planner/static/images/lighthouse.png)
+
+### ✅ **Validator Testing**
+
+- **HTML**: Passed W3C validation.
+- **CSS**: Passed Jigsaw validation.
+- **JavaScript**: Passed JSHint validation (minor warnings addressed).
 
 ---
 
-### **Validaciones**
+## 🚀 **Deployment**
 
-✔ **HTML**: Validado con W3C, sin errores.  
-✔ **CSS**: Validado con Jigsaw, sin errores.  
-✔ **JavaScript**: Validado con JSHint, sin advertencias significativas.
+Harmonize Calendar is deployed on **Heroku and GitHub**.
 
----
+### **Deployment Steps**
 
-## 🌍 **Despliegue**
+1. **Create a Heroku Account** at [Heroku](https://www.heroku.com/).
+2. **Install Heroku CLI** from [here](https://devcenter.heroku.com/articles/heroku-cli).
+3. **Login to Heroku** using `heroku login`.
+4. **Create a New Heroku App** using `heroku create harmonize-calendar`.
+5. **Set Environment Variables** for `SECRET_KEY` and `DEBUG`.
+6. **Deploy the application** using `git push heroku main`.
 
-El proyecto está alojado en Heroku y GitHub.
-
-🔗 **Enlace en Heroku**: [Harmonize Live](https://harmonize-calendar.herokuapp.com/)  
-🔗 **Repositorio en GitHub**: [GitHub Repository](https://github.com/tu-usuario/harmonize-calendar)
-
----
-
-## 🎖 **Créditos y Reconocimientos**
-
-- Desarrollado por **[Tu Nombre]**
-- Inspirado en la necesidad de una mejor organización personal.
-- Herramientas utilizadas: **React, Django, Bootstrap, Lighthouse.**
-- Imágenes de [Pexels](https://www.pexels.com/) y diseño propio.
+📌 **Live Application**: [Harmonize Calendar](https://harmonize-calendar.herokuapp.com/)  
+📌 **GitHub Repository**: [Harmonize on GitHub](https://github.com/your-repo-link)
 
 ---
 
-🔥 **Harmonize Calendar: Organiza tu vida con equilibrio.** 🔱
+## 🎨 **Media**
+
+All images used in this project are either **custom-designed** or sourced from [Pexels](https://www.pexels.com/).
+
+- **Productivity Images**: [Pexels](https://www.pexels.com/search/productivity/)
+- **Calendar Images**: [Pexels](https://www.pexels.com/search/calendar/)
+
+---
+
+## 🎖 **Credits and Acknowledgments**
+
+- **Developer**: Sebastian Perez B.
+- **Frameworks & Tools**: Django, React, Bootstrap, Lighthouse.
+- **Inspirations**: Task management systems and productivity methodologies.
+- **Special Thanks**: To all contributors and users who provided feedback.
+
+🔱 **Harmonize Calendar – Bringing Balance to Productivity!** 📅
