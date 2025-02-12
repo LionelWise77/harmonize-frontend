@@ -1,15 +1,7 @@
 /* HeroSection.module.css */
 
-.heroGreekBackground {
-  background-image: url("../assets/images/greek-myth.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #fff; /* Mantén el texto blanco para contraste */
-  font-family: "Georgia", serif;
-}
-
 .heroContainer {
-  background-image: url("../assets/images/greek-myth.jpg");
+  background-image: url("../assets/images/greek-myth.webp");
   height: 100vh;
   display: flex;
   justify-content: center;
