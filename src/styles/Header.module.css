@@ -19,6 +19,11 @@
   align-items: end;
 }
 
+.NavLogo img {
+  height: 50px; /* Adjust size as needed */
+  width: auto;
+}
+
 .NavLogo {
   font-size: 1.5rem;
   font-weight: bold;

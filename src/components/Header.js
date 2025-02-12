@@ -7,6 +7,7 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
+import logo from "../assets/images/logo-tridente2.png"; // Adjust path based on your structure
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -74,7 +75,7 @@ const NavBar = () => {
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
         <NavLink to="/" className={styles.NavLogo}>
-          Harmonize
+          <img src={logo} alt="Harmonize Logo" className={styles.LogoImage} />
         </NavLink>
         {currentUser && (
           <span className={styles.userName}>Hi, {currentUser.username}!</span>
