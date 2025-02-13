@@ -133,7 +133,7 @@ The application was tested across various devices for compatibility.
 - **Best Practices**: 100%
 - **SEO**: 95%
 
-![Lighthouse Testing](/planner/static/images/lighthouse.png)
+![Lighthouse Testing]()
 
 ### ✅ **Validator Testing**
 
