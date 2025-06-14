@@ -1,126 +1,131 @@
-# **Harmonize Calendar** 📅🔱
+# Harmonize Calendar 📅🔱
 
-# <img src="../harmonize-frontend/src/assets/images/logo-tridente2.png" alt="Harmonize Logo" width="100px"/>
+![Harmonize Logo](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/logo-tridente2.png)
 
 Welcome to **Harmonize Calendar**, an application designed to help you **organize tasks, manage habits, and stay productive** while maintaining balance. Inspired by the concept of **harmony**, Harmonize allows you to plan, prioritize, and visualize your workload efficiently.
 
 ---
 
-## 📌 **Table of Contents**
+## 📌 Table of Contents
 
 1. [Features](#features)
-2. [Design Process](#design-process)
-   - [Wireframes](#wireframes)
-   - [Diagram](#diagram)
-   - [Mockups](#mockups)
-3. [Key Sections](#key-sections)
-   - [Header](#header)
-   - [Task Management](#task-management)
-   - [Interactive Calendar](#interactive-calendar)
-   - [Footer](#footer)
-4. [Testing](#testing)
-5. [Deployment](#deployment)
-6. [Credits and Acknowledgments](#credits-and-acknowledgments)
+2. [User Stories](#user-stories)
+3. [Design Process](#design-process)
+4. [Key Sections](#key-sections)
+5. [Testing](#testing)
+6. [Agile Workflow](#agile-workflow)
+7. [Deployment](#deployment)
+8. [Media](#media)
+9. [Credits and Acknowledgments](#credits-and-acknowledgments)
 
 ---
 
-## 🚀 **Features**
+## 🚀 Features
 
-- **Navigation Bar**: Clean layout with links to tasks, calendar, user profiles, login, and logout.
-- **Task Management**: Create, categorize, and prioritize tasks with deadlines and status updates.
-- **Interactive Calendar**: View tasks, deadlines, and events in an easy-to-navigate calendar.
-- **User Authentication**: Secure login, registration, and profile management.
-- **Progress Tracking**: Mark completed tasks and analyze productivity trends.
-
----
-
-## 🎨 **Design Process**
-
-### 📌 **Wireframes**
-
-Wireframes were created to define the application’s layout and structure.
-
-#### Home Page
-
-![Wireframe Harmonize Calender](../harmonize-frontend/src/assets/images/WireframeDefinitive.png)
-
-### 🎨 **Diagram **
-
-![Diagram Harmonize Calender](../harmonize-frontend/src/assets/images/Diagram-Flow.webp)
-
-### 🎨 **Mockups**
-
-High-fidelity mockups visualize the final design:  
-![Harmonize Mockup](../harmonize-frontend/src/assets/images/WireframeDefinitive.png)
+- **Navigation Bar**: Clean layout with links to tasks, calendar, login, logout, and user profiles.
+- **Task Management**: Create, categorize, and prioritize tasks with deadlines and status.
+- **Interactive Calendar**: View tasks in a drag-and-drop calendar.
+- **User Authentication**: Secure login, registration, and profile editing.
+- **Motivational Quotes**: Displayed on load to enhance user experience.
+- **Responsive Design**: Works on mobile, tablet, and desktop.
+- **Validation**: Prevents creation of invalid tasks (past dates, missing titles, etc.)
 
 ---
 
-## 🏗️ **Key Sections**
+## 🧑‍💼 User Stories
 
-### 🔝 **Header**
-
-The **Harmonize Calendar** header includes easy navigation links and a **dynamic welcome message**.
-
-- **Logged-Out View**:  
-  ![Header Logout](../harmonize-frontend/src/assets/images/HeaderJS.png)
-
-- **Logged-In View**:  
-  ![Header Login](../harmonize-frontend/src/assets/images/HeaderAuthJS.png)
+1. As a user, I want to register and log in to access my personalized tasks.
+2. As a user, I want to create, update, and delete tasks in a simple way.
+3. As a user, I want to see a calendar that helps me visualize my daily workload.
+4. As a user, I want task priorities to appear with different colors.
+5. As a user, I want motivational quotes to help me start the day.
+6. As a user, I want to be prevented from creating tasks in the past or with invalid times.
+7. As a user, I want a clear and minimal UI that’s easy to navigate.
 
 ---
 
-### ✅ **Land Page (Home)**
+## 🎨 Design Process
 
-![Land Page](../harmonize-frontend/src/assets/images/land-page.png)
+### 📌 Wireframes
 
----
+![Wireframe](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/WireframeDefinitive.png)
 
-### ✅ **Sign in**
+### 🧭 Diagram Flow
 
-Login Side.  
-![Task Manager](../harmonize-frontend/src/assets/images/loginForm.png)
+![Diagram](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/Diagram-Flow.webp)
 
----
+### 🎨 Mockups
 
-### ✅ **Sign Up**
-
-Register Side.  
-![Task Manager](../harmonize-frontend/src/assets/images/RegisterForm.png)
+![Mockup](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/land-page.png)
 
 ---
 
-### ✅ **Task Management**
+## 🏗️ Key Sections
 
-Organize and prioritize tasks efficiently.  
-![Task Manager](../harmonize-frontend/src/assets/images/task-manager.png)
+### 🔝 Header
+
+- Logged-out view:  
+  ![Header Logout](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/HeaderJS.png)
+
+- Logged-in view:  
+  ![Header Login](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/HeaderAuthJS.png)
+
+### 🔐 Auth Pages
+
+- Sign In:  
+  ![Login](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/loginForm.png)
+
+- Sign Up:  
+  ![Register](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/RegisterForm.png)
+
+### ✅ Task Management
+
+![Task Manager](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/task-manager.png)
+
+### 📆 Interactive Calendar
+
+![Calendar](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/interactivecalender.png)
+
+### ➕ CRUD Operations
+
+- Create Task:  
+  ![Create](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/CreateTask.png)
+
+- Update/Delete Task:  
+  ![CRUD](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/CRUD-form.png)
+
+### 📎 Footer
+
+![Footer](https://raw.githubusercontent.com/LionelWise77/harmonize-frontend/main/src/assets/images/footer.png)
 
 ---
 
-### 📆 **Interactive Calendar**
+## 🧪 Testing
 
-View and manage tasks with a **drag-and-drop** calendar.  
-![Calendar](../harmonize-frontend/src/assets/images/interactivecalender.png)
+### 🔍 Manual Testing Table
 
----
-
-### ✅ **Crud**
-
-Create Task Button
-![Create](../harmonize-frontend/src/assets/images/CreateTask.png)
-
-Here Users are allow to Delete or Update Task
-![Delete,Update](../harmonize-frontend/src/assets/images/CRUD-form.png)
-
----
-
-### 📌 **Footer**
-
-The footer includes **social media links and developer credits**.  
-![Footer](../harmonize-frontend/src/assets/images/footer.png)
+| Feature                                  | Action                  | Expected Result            | Status               |
+| ---------------------------------------- | ----------------------- | -------------------------- | -------------------- |
+| Login                                    | Enter valid credentials | Redirect to calendar       | ✅                   |
+| Register                                 | Create new user         | Success + Login            | ✅                   |
+| Add Task                                 | Submit form             | Task added to list         | ✅                   |
+| Add task in the past                     | Submit                  | Rejected                   | ✅                   |
+| Add task with end time before start time | Submit                  | Rejected                   | ✅                   |
+| Click "Add Task" twice fast              | Submit twice            | Only one task created      | ❌ (fix in progress) |
+| Click on date in calendar                | Open modal              | Prefill with selected date | ✅                   |
 
 ---
 
-## 🧪 **Testing**
+## 🌀 Agile Workflow
+
+- Project managed using GitHub Projects.
+- Features planned in weekly iterations.
+- Tasks were categorized with labels (Frontend, Backend, Bugs).
+- Regular commits with descriptive messages.
+
+📌 [Project Board (if public)](https://github.com/LionelWise77/harmonize-frontend/projects)
+
+---
 
 ### 📱 **Responsiveness**
 
@@ -134,57 +139,6 @@ The application was tested across various devices for compatibility.
 - **SEO**: 95%
 
 ![Lighthouse Testing]()
-
-### ✅ **Validator Testing**
-
-- **HTML**: Passed W3C validation.
-- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F)
-- **CSS**: Passed Jigsaw validation.
-- No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fyutorispa-4e43a431e62f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-- **JavaScript**: Passed JSHint validation (minor warnings addressed).
-- No errors were found when passing through the official [Jshint validator](https://jshint.com/)
-  **Metrics** - The following metrics were returned: - There are 2 functions in this file. - Function with the largest signature take 1 arguments, while the median is 1. - Largest function has 2 statements in it, while the median is 1.5. - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
-  - **One warning**
-    - 'arrow function syntax (=>)' is only available in ES6 (use 'esversion: 6').
-
----
-
-## 🛠️ **Performance Improvements**
-
-### Diagnostics
-
-- **Largest Contentful Paint element**: 4,930 ms
-- **Minimize main-thread work**: 3.5 s
-- **Preconnect to required origins**: Potential savings of 380 ms
-- **Minify JavaScript**: Potential savings of 240 KiB
-- **Reduce unused JavaScript**: Potential savings of 312 KiB
-- **Page prevented back/forward cache restoration**: 1 failure reason
-- **Image elements do not have explicit width and height**
-- **Minify CSS**: Potential savings of 11 KiB
-- **Serve images in next-gen formats**: Potential savings of 11 KiB
-- **Serve static assets with an efficient cache policy**: 3 resources found
-- **Eliminate render-blocking resources**: Potential savings of 0 ms
-- **Properly size images**: Potential savings of 10 KiB
-- **Remove duplicate modules in JavaScript bundles**: Potential savings of 11 KiB
-- **Avoid serving legacy JavaScript to modern browsers**: Potential savings of 8 KiB
-- **Reduce unused CSS**: Potential savings of 38 KiB
-- **Avoid enormous network payloads**: Total size was 4,147 KiB
-
-### Improvements Implemented
-
-- **Minimized main-thread work** by optimizing JavaScript code.
-- **Preconnected to required origins** to reduce latency.
-- **Minified JavaScript** to reduce file size.
-- **Reduced unused JavaScript** to improve load times.
-- **Added explicit width and height** to image elements.
-- **Minified CSS** to reduce file size.
-- **Served images in next-gen formats** like WebP.
-- **Configured efficient cache policies** for static assets.
-- **Properly sized images** to avoid unnecessary data transfer.
-- **Removed duplicate modules** in JavaScript bundles.
-- **Avoided serving legacy JavaScript** to modern browsers.
-- **Reduced unused CSS** to improve performance.
-- **Optimized network payloads** to reduce load times.
 
 ---
 
@@ -201,8 +155,8 @@ Harmonize Calendar is deployed on **Heroku and GitHub**.
 5. **Set Environment Variables** for `SECRET_KEY` and `DEBUG`.
 6. **Deploy the application** using `git push heroku main`.
 
-📌 **Live Application**: [Harmonize Calendar](https://harmonize-calendar.herokuapp.com/)  
-📌 **GitHub Repository**: [Harmonize on GitHub](https://github.com/your-repo-link)
+📌 **Live Application**: [Harmonize Calendar](https://harmonize-frontend-658a78db4f9b.herokuapp.com/)  
+📌 **GitHub Repository**: [Harmonize on GitHub](https://github.com/LionelWise77/harmonize-frontend)
 
 ---
 

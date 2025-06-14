@@ -4,7 +4,6 @@ import { axiosReq, axiosRes } from "./api/axiosDefaults";
 import { useContext } from "react";
 import { CurrentUserContext } from "./contexts/CurrentUserContext";
 
-// Obtener más datos de una API paginada
 export const fetchMoreData = async (resource, setResource) => {
   try {
     const { data } = await axiosReq.get(resource.next);
@@ -35,7 +34,6 @@ export const setTokenTimestamp = (data) => {
   }
 };
 
-// Verificar si es necesario refrescar el token
 export const shouldRefreshToken = () => {
   const tokenTimestamp = localStorage.getItem("refreshTokenTimestamp");
   if (!tokenTimestamp) return false;
@@ -44,12 +42,10 @@ export const shouldRefreshToken = () => {
   return currentTime > tokenTimestamp - 300;
 };
 
-// Eliminar la marca de tiempo del token
 export const removeTokenTimestamp = () => {
   localStorage.removeItem("refreshTokenTimestamp");
 };
 
-// Refrescar el token de acceso usando axios
 export const refreshToken = async () => {
   try {
     const { data } = await axiosRes.post("/dj-rest-auth/token/refresh/");
@@ -78,7 +74,6 @@ export const useCurrentUser = () => {
   return { currentUser, setCurrentUser, updateCurrentUser };
 };
 
-// Cerrar sesión y limpiar datos
 export const logoutUser = (setCurrentUser) => {
   try {
     removeTokenTimestamp();

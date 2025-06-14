@@ -32,7 +32,7 @@ function SignInForm() {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
       setCurrentUser(data.user);
-      history.push("/tasks"); // Redirige a la página de tareas
+      history.push("/tasks");
     } catch (err) {
       setErrors(err.response?.data || {});
     }
