@@ -150,8 +150,10 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             name="priority"
             value={formData.priority}
             onChange={handleChange}
+            required
             className={styles.formControl}
           >
+            <option value="">Select priority</option>
             <option value="L">Low</option>
             <option value="M">Medium</option>
             <option value="H">High</option>

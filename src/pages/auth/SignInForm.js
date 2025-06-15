@@ -59,6 +59,8 @@ function SignInForm() {
                 name="username"
                 value={username}
                 onChange={handleChange}
+                required
+                minLength={3}
               />
               {errors.username?.map((message, idx) => (
                 <Alert
@@ -79,6 +81,8 @@ function SignInForm() {
                 name="password"
                 value={password}
                 onChange={handleChange}
+                required
+                minLength={6}
               />
               {errors.password?.map((message, idx) => (
                 <Alert
