@@ -52,6 +52,7 @@ function SignInForm() {
           <h1 className={styles.Header}>Sign In</h1>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="username">
+              <Form.Label>Username</Form.Label>
               <Form.Control
                 className={styles.Input}
                 type="text"

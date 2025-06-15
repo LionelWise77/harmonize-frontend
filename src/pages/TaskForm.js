@@ -120,6 +120,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             onChange={handleChange}
             className={styles.formControl}
             min={new Date().toISOString().split("T")[0]}
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -153,7 +154,9 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             required
             className={styles.formControl}
           >
-            <option value="">Select priority</option>
+            <option value="" disabled>
+              Select a priority
+            </option>
             <option value="L">Low</option>
             <option value="M">Medium</option>
             <option value="H">High</option>
@@ -166,7 +169,11 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             value={formData.status}
             onChange={handleChange}
             className={styles.formControl}
+            required
           >
+            <option value="" disabled>
+              Select a status
+            </option>
             <option value="open">Open</option>
             <option value="in_progress">In Progress</option>
             <option value="completed">Completed</option>
