@@ -49,6 +49,8 @@ const SignUpForm = () => {
                 name="username"
                 value={username}
                 onChange={handleChange}
+                required
+                minLength={3}
               />
               {errors.username?.map((message, idx) => (
                 <Alert
@@ -69,6 +71,7 @@ const SignUpForm = () => {
                 name="email"
                 value={email}
                 onChange={handleChange}
+                required
               />
               {errors.email?.map((message, idx) => (
                 <Alert
@@ -89,6 +92,8 @@ const SignUpForm = () => {
                 name="password1"
                 value={password1}
                 onChange={handleChange}
+                required
+                minLength={8}
               />
               {errors.password1?.map((message, idx) => (
                 <Alert
@@ -109,6 +114,8 @@ const SignUpForm = () => {
                 name="password2"
                 value={password2}
                 onChange={handleChange}
+                required
+                minLength={8}
               />
               {errors.password2?.map((message, idx) => (
                 <Alert

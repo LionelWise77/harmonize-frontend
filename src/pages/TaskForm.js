@@ -119,6 +119,7 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             value={formData.due_date}
             onChange={handleChange}
             className={styles.formControl}
+            min={new Date().toISOString().split("T")[0]}
           />
         </div>
         <div className={styles.formGroup}>
@@ -167,7 +168,6 @@ const TaskForm = ({ initialData = {}, handleSubmit, onCancel }) => {
             <option value="open">Open</option>
             <option value="in_progress">In Progress</option>
             <option value="completed">Completed</option>
-            <option value="overdue">Overdue</option>
           </select>
         </div>
       </div>
