@@ -9,11 +9,11 @@ Welcome to **Harmonize Calendar**, an application designed to help you **organiz
 ## 📌 Table of Contents
 
 1. [Features](#features)
-2. [User Stories](#user-stories)
-3. [Design Process](#design-process)
-4. [Key Sections](#key-sections)
-5. [Testing](#testing)
-6. [Agile Workflow](#agile-workflow)
+2. [Agile Workflow](#agile-workflow)
+3. [User Stories](#user-stories)
+4. [Design Process](#design-process)
+5. [Key Sections](#key-sections)
+6. [Testing](#testing)
 7. [Deployment](#deployment)
 8. [Media](#media)
 9. [Credits and Acknowledgments](#credits-and-acknowledgments)
@@ -31,6 +31,20 @@ Welcome to **Harmonize Calendar**, an application designed to help you **organiz
 - **Validation**: Prevents creation of invalid tasks (past dates, missing titles, etc.)
 
 ---
+
+## 🧠 Agile Development
+
+This project followed an agile methodology, using **GitHub Projects** to manage tasks and development progress. The board was organized into columns such as:  
+📌 To Do, 🛠 In Progress, ✅ Done
+
+Tasks were broken into **epics** and **user stories**, providing a clear structure for development and prioritization. This helped in maintaining focus and achieving consistent delivery throughout the project timeline.
+
+### 🔍 Tools Used
+
+- ✅ GitHub Projects for visual task management
+- ✅ Git + GitHub for version control and collaboration
+- ✅ Regular commits with descriptive messages to track progress clearly
+- ✅ Markdown-based documentation for planning and delivery tracking
 
 ## 🧑‍💼 User Stories
 
@@ -115,13 +129,6 @@ Welcome to **Harmonize Calendar**, an application designed to help you **organiz
 | Click on date in calendar                | Open modal              | Prefill with selected date | ✅                   |
 
 ---
-
-## 🌀 Agile Workflow
-
-- Project managed using GitHub Projects.
-- Features planned in weekly iterations.
-- Tasks were categorized with labels (Frontend, Backend, Bugs).
-- Regular commits with descriptive messages.
 
 📌 [Project Board (if public)](https://github.com/LionelWise77/harmonize-frontend/projects)
 
