@@ -55,6 +55,9 @@ Tasks were broken into **epics** and **user stories**, providing a clear structu
 5. As a user, I want motivational quotes to help me start the day.
 6. As a user, I want to be prevented from creating tasks in the past or with invalid times.
 7. As a user, I want a clear and minimal UI that’s easy to navigate.
+8. As a user, I want to avoid submitting the same form multiple times rapidly to prevent duplicated data.
+9. As a user, I want the date picker to block past dates so I don’t accidentally create outdated tasks.
+10. As a user, I want to set a task at 00:00 without the system treating it as invalid.
 
 ---
 
