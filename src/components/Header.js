@@ -7,7 +7,7 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
-import logo from "../assets/images/logo-tridente2.png"; // Adjust path based on your structure
+import logo from "../assets/images/logo-tridente2.png"; // Ajusta el path según tu estructura
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -37,36 +37,44 @@ const NavBar = () => {
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/tasks"
+        aria-label="Go to Tasks"
       >
-        <i className="fas fa-tasks"></i>Tasks
+        <i className="fas fa-tasks" aria-hidden="true"></i>Tasks
       </NavLink>
 
-      <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        <i className="fas fa-sign-out-alt"></i>Sign out
+      <NavLink
+        className={styles.NavLink}
+        to="/"
+        onClick={handleSignOut}
+        aria-label="Sign out"
+      >
+        <i className="fas fa-sign-out-alt" aria-hidden="true"></i>Sign out
       </NavLink>
       <NavLink
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
+        aria-label="Go to Profile"
       ></NavLink>
     </>
   );
 
-  // Enlaces visibles para usuarios no autenticados
   const loggedOutIcons = (
     <>
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
         to="/signin"
+        aria-label="Sign in"
       >
-        <i className="fas fa-sign-in-alt"></i>Sign in
+        <i className="fas fa-sign-in-alt" aria-hidden="true"></i>Sign in
       </NavLink>
       <NavLink
         to="/signup"
         className={styles.NavLink}
         activeClassName={styles.Active}
+        aria-label="Sign up"
       >
-        <i className="fas fa-user-plus"></i>Sign up
+        <i className="fas fa-user-plus" aria-hidden="true"></i>Sign up
       </NavLink>
     </>
   );
@@ -74,22 +82,28 @@ const NavBar = () => {
   return (
     <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
-        <NavLink to="/" className={styles.NavLogo}>
+        <NavLink to="/" className={styles.NavLogo} aria-label="Go to Home">
           <img src={logo} alt="Harmonize Logo" className={styles.LogoImage} />
         </NavLink>
         {currentUser && (
-          <span className={styles.userName}>Hi, {currentUser.username}!</span>
+          <span className={styles.userName} aria-live="polite">
+            Hi, {currentUser.username}!
+          </span>
         )}
-        <Navbar.Toggle aria-controls="navbar-nav" />
-        <Navbar.Collapse className="navbar-nav">
+        <Navbar.Toggle
+          aria-controls="navbar-nav"
+          aria-label="Toggle navigation"
+        />
+        <Navbar.Collapse id="navbar-nav">
           <Nav className="ml-auto text-right">
             <NavLink
               exact
               className={styles.NavLink}
               activeClassName={styles.Active}
               to="/"
+              aria-label="Go to Home"
             >
-              <i className="fas fa-home"></i>Home
+              <i className="fas fa-home" aria-hidden="true"></i>Home
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}
