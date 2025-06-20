@@ -5,12 +5,13 @@
   gap: 1rem;
   background-color: #ffffff;
   padding: 1rem;
-  border-radius: 6px; /* Rectangular */
+  border-radius: 6px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 300px; /* Más compacto */
+  max-width: 300px; /* Se mantiene compacto */
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease; /* Suaviza la transición para hacer el diseño más fluido */
 }
 
 /* Fila para agrupar campos */
@@ -39,14 +40,16 @@ label {
   padding: 0.4rem;
   font-size: 0.85rem;
   border: 1px solid #ddd;
-  border-radius: 6px; /* Más cuadrado */
+  border-radius: 6px;
   background-color: #f9f9f9;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Mejorar el enfoque de los campos */
 .formControl:focus {
-  border-color: #4caf50; /* Verde moderno */
-  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5);
+  border-color: #4caf50; /* Verde brillante */
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.5); /* Suaviza el borde */
+  outline: none; /* Evita la sombra del borde del navegador */
 }
 
 /* Botón moderno */
@@ -61,9 +64,10 @@ label {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto hover */
 .btnModern:hover {
   background-color: #43a047;
-  transform: translateY(-2px); /* Efecto de hover */
+  transform: translateY(-2px);
 }
 
 /* Botón secundario */
@@ -73,11 +77,32 @@ label {
   padding: 0.5rem 1rem;
   font-size: 0.85rem;
   border: none;
-  border-radius: 6px; /* Más cuadrado */
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btnSecondary:hover {
   background-color: #d6d6d6;
+}
+
+/* Estilos responsivos para el formulario */
+@media (max-width: 768px) {
+  .taskForm {
+    padding: 1.5rem; /* Aumenta el espaciado en pantallas pequeñas */
+    max-width: 90%; /* Asegura que el formulario ocupe más espacio en pantallas pequeñas */
+  }
+
+  /* Ajusta los campos de entrada */
+  .formControl {
+    font-size: 1rem; /* Mejora la legibilidad */
+    padding: 0.6rem;
+  }
+
+  /* Ajuste de los botones */
+  .btnModern,
+  .btnSecondary {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+  }
 }

@@ -1,10 +1,18 @@
+/* Contenedor del calendario */
 .calendarContainer {
   padding: 20px;
   background-color: #f9f9f9; /* Un fondo claro para resaltar el calendario */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera para darle profundidad */
+  transition: box-shadow 0.3s ease; /* Transición suave para la sombra */
 }
 
+/* Efecto al pasar el ratón sobre el contenedor */
+.calendarContainer:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más profunda en hover */
+}
+
+/* Botón para crear tarea */
 .createTaskButton {
   margin-bottom: 20px;
   padding: 10px 16px; /* Más espacio para que sea cómodo de pulsar */
@@ -26,10 +34,16 @@
   transform: scale(0.98); /* Efecto al hacer clic */
 }
 
+/* Formulario de tareas */
 .taskForm {
   margin-top: 20px;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Botón de eliminar tarea */
 .btnDelete {
   margin-top: 10px;
   background-color: red;
@@ -37,12 +51,20 @@
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+  border-radius: 6px; /* Bordes redondeados para un estilo más suave */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btnDelete:hover {
   background-color: darkred;
+  transform: scale(1.05); /* Efecto de aumento */
 }
 
+.btnDelete:active {
+  transform: scale(0.98); /* Efecto de reducción al hacer clic */
+}
+
+/* Estilos del modal */
 .modal {
   position: absolute;
   top: 50%;
@@ -53,12 +75,26 @@
   background: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más suave */
   width: 90%;
   max-width: 500px;
   z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Transición suave */
 }
 
+/* Modal visible */
+.modal.open {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1); /* Escala suave */
+}
+
+/* Modal cerrado */
+.modal.closed {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8); /* Escala pequeña y transparente */
+}
+
+/* Overlay */
 .overlay {
   position: fixed;
   top: 0;
@@ -67,4 +103,38 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+.overlay.open {
+  background-color: rgba(0, 0, 0, 0.7); /* Un poco más oscuro */
+}
+
+.overlay.closed {
+  background-color: rgba(0, 0, 0, 0); /* Transparente */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .calendarContainer {
+    padding: 15px; /* Espaciado reducido en pantallas pequeñas */
+  }
+
+  .createTaskButton {
+    padding: 12px 18px;
+    font-size: 1rem; /* Botón más grande en pantallas pequeñas */
+  }
+
+  .taskForm {
+    margin-top: 15px;
+  }
+
+  .btnDelete {
+    padding: 12px 25px;
+    font-size: 1rem; /* Aseguramos que el botón sea legible en móviles */
+  }
+
+  .modal {
+    width: 90%; /* Asegura que el modal ocupe un 90% del ancho en móviles */
+  }
 }
