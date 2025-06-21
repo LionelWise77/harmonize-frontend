@@ -86,9 +86,7 @@ const NavBar = () => {
           <img src={logo} alt="Harmonize Logo" className={styles.LogoImage} />
         </NavLink>
         {currentUser && (
-          <span className={styles.userName} aria-live="polite">
-            Hi, {currentUser.username}!
-          </span>
+          <span className={styles.userName}>Hi, {currentUser.username}!</span>
         )}
         <Navbar.Toggle
           aria-controls="navbar-nav"

@@ -133,6 +133,13 @@ Tasks were broken into **epics** and **user stories**, providing a clear structu
 
 ---
 
+### Validator Testing
+
+- HTML
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fharmonize-frontend-658a78db4f9b.herokuapp.com%2Ftasks)
+- CSS
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Flionelwise77.github.io%2FPP1-The-Alchemist-Cave%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
 📌 [Project Board (if public)](https://github.com/LionelWise77/harmonize-frontend/projects)
 
 ---
